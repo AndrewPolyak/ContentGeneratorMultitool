@@ -1,26 +1,29 @@
 package model;
 
 /**
- * TODO
+ * The Password class contains various variables (and getters) for values which may be used in password creation
+ * 
+ * @version 4/22/2024
+ * @author Andrew Polyak
  */
 public class Password {
 
-	// TODO
+	// The constant String value LETTERS_LOWERCASE contains the entire lower-case English alphabet (a-z)
 	private static final String LETTERS_LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
 	
-	// TODO
+	// The constant String value LETTERS_UPPERCASE contains the entire upper-case English alphabet (A-Z)
 	private static final String LETTERS_UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
-	// TODO
+	// The constant String value NUMBERS contains all Hindu-Arabic numbers (0-9)
 	private static final String NUMBERS = "0123456789";
 	
-	// TODO
+	// The constant String value SPECIAL_CHARACTERS_ALL contains all special characters commonly found on keyboards
 	private static final String SPECIAL_CHARACTERS_ALL = "!@#$%^&*()_-+={[}]:;<,>.?/~`|\\\"\'";
 	
-	// TODO
-	private static final String SPECIAL_CHARACTERS_LIMITED = "!@#$%^&*()_-+={[}]:;<,>.?/~`|";
+	// The constant String value SPECIAL_CHARACTERS_LTD contains all special characters commonly found on keyboards except for the following: " ' \
+	private static final String SPECIAL_CHARACTERS_LTD = "!@#$%^&*()_-+={[}]:;<,>.?/~`|";
 	
-	// TODO
+	// The constant String value SPACE contains a space character
 	private static final String SPACE = " ";
 	
 	
@@ -31,7 +34,7 @@ public class Password {
 
 
 	/**
-	 * TODO
+	 * The getLettersLowercase method returns the entire lower-case English alphabet (a-z) as a String value
 	 * 
 	 * @return
 	 */
@@ -41,7 +44,7 @@ public class Password {
 
 	
 	/**
-	 * TODO
+	 * The getLettersUppercase method returns the entire upper-case English alphabet (A-Z) as a String value
 	 * 
 	 * @return
 	 */
@@ -51,7 +54,7 @@ public class Password {
 
 
 	/**
-	 * TODO
+	 * The getNumbers method returns all Hindu-Arabic numbers (0-9) as a String value
 	 * 
 	 * @return
 	 */
@@ -61,7 +64,7 @@ public class Password {
 
 
 	/**
-	 * TODO
+	 * The getSpecialCharactersAll method returns all special characters commonly found on keyboards as a String value
 	 * 
 	 * @return
 	 */
@@ -71,17 +74,17 @@ public class Password {
 
 
 	/**
-	 * TODO
+	 * The getSpecialCharactersLtd method returns all special characters commonly found on keyboards except for the following: " ' \ as a String value
 	 * 
 	 * @return
 	 */
-	public static String getSpecialCharactersLimited() {
-		return SPECIAL_CHARACTERS_LIMITED;
+	public static String getSpecialCharactersLtd() {
+		return SPECIAL_CHARACTERS_LTD;
 	}
 
 
 	/**
-	 * TODO
+	 * The getSpace method returns a space character as a String value
 	 * 
 	 * @return
 	 */
