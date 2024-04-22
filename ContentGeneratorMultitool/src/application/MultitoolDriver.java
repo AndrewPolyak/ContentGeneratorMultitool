@@ -7,7 +7,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 
+/**
+ * The MultitoolDriver class initializes the GUI and executes the main method (i.e., the program)
+ * 
+ * @version 04/22/2024
+ * @author Andrew Polyak
+ */
 public class MultitoolDriver extends Application {
+	
+	/**
+	 * The start method initializes the GUI and specifies it's file path
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -21,6 +31,11 @@ public class MultitoolDriver extends Application {
 		}
 	}
 	
+	/**
+	 * The main method executes the program
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
