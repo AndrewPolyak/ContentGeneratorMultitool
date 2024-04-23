@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -59,11 +63,13 @@ public class MultitoolController {
 		email = new Email();
 		birthday = new Birthday();
 		
+		// Load saved data
 		loadPasswordData();
 		loadNameData();
 		loadEmailData();
 		loadBirthdayData();
 		
+		// Load generation resource data
 		loadFirstNameDatabase();
 		loadLastNameDatabase();
 	}
@@ -73,8 +79,49 @@ public class MultitoolController {
 	 * The loadPasswordData method loads the txt file containing the user's saved passwords into the passwords ArrayList
 	 */
 	private void loadPasswordData() {
+		
+		// Instantiate firstNames, which will contain all first names
 		passwords = new ArrayList<>();
+		
+		// password is a String value which will contain each password read from the data file
+		String password;
+		
+		File pwdb = new File("resources/saved-passwords.txt"); // pwdb (password database) 
+		
+		try {
+			Scanner fileReader = new Scanner(pwdb);
+			
+			// For each line of pwdb, assign the line's data to password, then append that value to the passwords ArrayList
+			while (fileReader.hasNext()) {
+				password = fileReader.nextLine().trim();
+				passwords.add(password);
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
+	
+	
+	/**
+	 * TODO
+	 */
+	private void savePasswordData() {
+		try {
+			FileWriter fileWriter = new FileWriter("resources/saved-passwords.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			// Write each saved password to the saved password database
+			for (String password : passwords) {
+				printWriter.write(this.password.formatData(password));
+			}
+			
+			printWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * The loadNameData method loads the txt file containing the user's saved names into the names ArrayList
@@ -83,12 +130,14 @@ public class MultitoolController {
 		names = new ArrayList<>();
 	}
 	
+	
 	/**
 	 * The loadEmailData method loads the txt file containing the user's saved emails into the emails ArrayList
 	 */
 	private void loadEmailData() {
 		emails = new ArrayList<>();
 	}
+	
 	
 	/**
 	 * The loadBirthdayData method loads the txt file containing the user's saved birthdays into the birthdays ArrayList
@@ -110,8 +159,9 @@ public class MultitoolController {
 		// firstName is a String value which will contain each first name read from the data file
 		String firstName;
 		
+		File fndb = new File("resources/first-names.txt"); // fndb (first name database) 
+		
 		try {
-			File fndb = new File("resources/first-names.txt"); // fndb (first name database) 
 			Scanner fileReader = new Scanner(fndb);
 			
 			// For each line of fndb, assign the line's data to firstName, then append that value to the firstNames ArrayList
@@ -120,17 +170,38 @@ public class MultitoolController {
 				firstNames.add(firstName);
 			}
 			fileReader.close();
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
 	
 	/**
-	 * TODO
+	 * The loadLastNameDatabase method loads the txt file containing all potential last names that may be used for 
+	 * name generation into the lastNames ArrayList
 	 */
 	private void loadLastNameDatabase() {
+
+		// Instantiate lastNames, which will contain all last names
 		lastNames = new ArrayList<>();
+		
+		// lastName is a String value which will contain each last name read from the data file
+		String lastName;
+		
+		File lndb = new File("resources/last-names.txt"); // lndb (last name database) 
+		
+		try {
+			Scanner fileReader = new Scanner(lndb);
+			
+			// For each line of lndb, assign the line's data to lastName, then append that value to the lastNames ArrayList
+			while (fileReader.hasNext()) {
+				lastName = fileReader.nextLine().trim();
+				lastNames.add(lastName);
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
