@@ -54,7 +54,7 @@ public class Password {
 
 
 	/**
-	 * The getNumbers method returns all Hindu-Arabic numbers (0-9) as a String value
+	 * The getNumbers method returns all Hindu-Arabic numerals (0-9) as a String value
 	 * 
 	 * @return
 	 */
