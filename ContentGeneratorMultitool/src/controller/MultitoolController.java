@@ -15,41 +15,41 @@ import model.Password;
 
 
 /**
- * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling, data loading/saving, etc.
+ * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling logic, data loading/saving, etc.
  * 
- * @version 04/23/2024
+ * @version 04/24/2024
  * @author Andrew Polyak
  */
 public class MultitoolController {
 	
-	//TODO
+	// password is an instance of the Password class which contains all the data for creating a password
 	private Password password;
 	
-	//TODO
+	// name is an instance of the Name class
 	private Name name;
 	
-	//TODO
+	// email is an instance of the Email class
 	private Email email;
 	
-	//TODO
+	// birthday is an instance of the Birthday class
 	private Birthday birthday;
 	
-	// TODO
+	// passwords is an ArrayList of String values which represent all user-saved passwords
 	private ArrayList<String> passwords;
 	
-	//TODO
+	// names is an ArrayList of String values which represent all user-saved names
 	private ArrayList<String> names;
 	
-	//TODO
+	// emails is an ArrayList of String values which represent all user-saved emails
 	private ArrayList<String> emails;
 	
-	//TODO
+	// birthdays is an ArrayList of String values which represent all user-saved birthdays
 	private ArrayList<String> birthdays;
 	
-	//TODO
+	// firstNames is an ArrayList of String values which represents all possible first names which can be randomly generated
 	private ArrayList<String> firstNames;
 	
-	//TODO
+	// lastNames is an ArrayList of String values which represents all possible last names which can be randomly generated
 	private ArrayList<String> lastNames;
 	
 	
@@ -178,7 +178,6 @@ public class MultitoolController {
 	 * The loadEmailData method loads the txt file containing the user's saved emails into the emails ArrayList
 	 */
 	private void loadEmailData() {
-		emails = new ArrayList<>();
 		
 		// Instantiate emails, which will contain all emails
 		emails = new ArrayList<>();
@@ -228,16 +227,48 @@ public class MultitoolController {
 	 * The loadBirthdayData method loads the txt file containing the user's saved birthdays into the birthdays ArrayList
 	 */
 	private void loadBirthdayData() {
+
+		// Instantiate birthdays, which will contain all birthdays
 		birthdays = new ArrayList<>();
-		//TODO
+		
+		// email is a String value which will contain each email read from the data file
+		String birthday;
+		
+		File bdb = new File("resources/saved-birthdays.txt"); // bdb (birthday database) 
+		
+		try {
+			Scanner fileReader = new Scanner(bdb);
+			
+			// For each line of bdb, assign the line's data to birthday, then append that value to the birthdays ArrayList
+			while (fileReader.hasNext()) {
+				birthday = fileReader.nextLine().trim();
+				birthdays.add(birthday);
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
 	/**
-	 * TODO
+	 * The saveBirthdayData method reads the ArrayList containing all birthdays saved by the user, and
+	 * formats + adds the data to the saved-birthdays txt file
 	 */
 	private void saveBirthdayData() {
-		//TODO
+		try {
+			FileWriter fileWriter = new FileWriter("resources/saved-birthdays.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			// Write each saved birthday to the saved birthday database
+			for (String birthday : birthdays) {
+				printWriter.write(this.birthday.formatData(birthday));
+			}
+			
+			printWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

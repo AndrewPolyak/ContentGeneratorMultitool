@@ -1,9 +1,10 @@
 package model;
 
 /**
- * The Password class contains various variables (and getters) for values which may be used in password creation
+ * The Password class contains various variables (and getters) for values which may be used in password creation,
+ * as well as a data formatting method for file storage
  * 
- * @version 4/22/2024
+ * @version 4/24/2024
  * @author Andrew Polyak
  */
 public class Password {

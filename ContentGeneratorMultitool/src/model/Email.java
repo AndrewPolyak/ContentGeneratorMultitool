@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * The Email class contains a data formatting method for file storage
+ * 
+ * @version 4/24/2024
+ * @author Andrew Polyak
+ */
 public class Email {
 
 	/**
