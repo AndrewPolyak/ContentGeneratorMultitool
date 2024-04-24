@@ -36,7 +36,7 @@ public class Password {
 	/**
 	 * The getLettersLowercase method returns the entire lower-case English alphabet (a-z) as a String value
 	 * 
-	 * @return
+	 * @return TODO
 	 */
 	public static String getLettersLowercase() {
 		return LETTERS_LOWERCASE;
@@ -46,7 +46,7 @@ public class Password {
 	/**
 	 * The getLettersUppercase method returns the entire upper-case English alphabet (A-Z) as a String value
 	 * 
-	 * @return
+	 * @return TODO
 	 */
 	public static String getLettersUppercase() {
 		return LETTERS_UPPERCASE;
@@ -66,7 +66,7 @@ public class Password {
 	/**
 	 * The getSpecialCharactersAll method returns all special characters commonly found on keyboards as a String value
 	 * 
-	 * @return
+	 * @return TODO
 	 */
 	public static String getSpecialCharactersAll() {
 		return SPECIAL_CHARACTERS_ALL;
@@ -76,7 +76,7 @@ public class Password {
 	/**
 	 * The getSpecialCharactersLtd method returns all special characters commonly found on keyboards except for the following: " ' \ as a String value
 	 * 
-	 * @return
+	 * @return TODO
 	 */
 	public static String getSpecialCharactersLtd() {
 		return SPECIAL_CHARACTERS_LTD;
@@ -86,7 +86,7 @@ public class Password {
 	/**
 	 * The getSpace method returns a space character as a String value
 	 * 
-	 * @return
+	 * @return TODO
 	 */
 	public static String getSpace() {
 		return SPACE;

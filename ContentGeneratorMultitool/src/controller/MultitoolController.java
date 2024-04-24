@@ -80,7 +80,7 @@ public class MultitoolController {
 	 */
 	private void loadPasswordData() {
 		
-		// Instantiate firstNames, which will contain all first names
+		// Instantiate passwords, which will contain all passwords
 		passwords = new ArrayList<>();
 		
 		// password is a String value which will contain each password read from the data file
@@ -104,7 +104,8 @@ public class MultitoolController {
 	
 	
 	/**
-	 * TODO
+	 * The savePasswordData method reads the ArrayList containing all passwords saved by the user, and
+	 * formats + adds the data to the saved-passwords txt file
 	 */
 	private void savePasswordData() {
 		try {
@@ -128,6 +129,48 @@ public class MultitoolController {
 	 */
 	private void loadNameData() {
 		names = new ArrayList<>();
+		
+		// Instantiate names, which will contain all full names
+				names = new ArrayList<>();
+				
+				// name is a String value which will contain each full name read from the data file
+				String name;
+				
+				File ndb = new File("resources/saved-names.txt"); // ndb (name database) 
+				
+				try {
+					Scanner fileReader = new Scanner(ndb);
+					
+					// For each line of ndb, assign the line's data to name, then append that value to the names ArrayList
+					while (fileReader.hasNext()) {
+						name = fileReader.nextLine().trim();
+						names.add(name);
+					}
+					fileReader.close();
+				} catch (FileNotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+	}
+	
+	
+	/**
+	 * The saveNameData method reads the ArrayList containing all names saved by the user, and
+	 * formats + adds the data to the saved-names txt file
+	 */
+	private void saveNameData() {
+		try {
+			FileWriter fileWriter = new FileWriter("resources/saved-names.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			// Write each saved full name to the saved name database
+			for (String name : names) {
+				printWriter.write(this.name.formatData(name));
+			}
+			
+			printWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -136,6 +179,48 @@ public class MultitoolController {
 	 */
 	private void loadEmailData() {
 		emails = new ArrayList<>();
+		
+		// Instantiate emails, which will contain all emails
+		emails = new ArrayList<>();
+		
+		// email is a String value which will contain each email read from the data file
+		String email;
+		
+		File edb = new File("resources/saved-emails.txt"); // edb (email database) 
+		
+		try {
+			Scanner fileReader = new Scanner(edb);
+			
+			// For each line of edb, assign the line's data to email, then append that value to the emails ArrayList
+			while (fileReader.hasNext()) {
+				email = fileReader.nextLine().trim();
+				emails.add(email);
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * The saveEmailData method reads the ArrayList containing all emails saved by the user, and
+	 * formats + adds the data to the saved-emails txt file
+	 */
+	private void saveEmailData() {
+		try {
+			FileWriter fileWriter = new FileWriter("resources/saved-emails.txt");
+			PrintWriter printWriter = new PrintWriter(fileWriter);
+			
+			// Write each saved email to the saved email database
+			for (String email : emails) {
+				printWriter.write(this.email.formatData(email));
+			}
+			
+			printWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -144,6 +229,15 @@ public class MultitoolController {
 	 */
 	private void loadBirthdayData() {
 		birthdays = new ArrayList<>();
+		//TODO
+	}
+	
+	
+	/**
+	 * TODO
+	 */
+	private void saveBirthdayData() {
+		//TODO
 	}
 	
 	
