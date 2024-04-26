@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -32,11 +34,11 @@
                               </AnchorPane>
                               <AnchorPane layoutY="100.0" prefHeight="675.0" prefWidth="1000.0">
                                  <children>
-                                    <AnchorPane prefHeight="675.0" prefWidth="350.0" style="-fx-background-color: #2a363b;">
+                                    <AnchorPane prefHeight="675.0" prefWidth="300.0" style="-fx-background-color: #2a363b;">
                                        <children>
-                                          <Text fill="#e84a5f" layoutX="23.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Secure Password Generator" textAlignment="CENTER">
+                                          <Text fill="#e84a5f" layoutX="13.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Secure Password Generator" textAlignment="CENTER">
                                              <font>
-                                                <Font name="Tahoma" size="25.0" />
+                                                <Font name="Tahoma Bold" size="20.0" />
                                              </font>
                                           </Text>
                                           <Text fill="#e84a5f" layoutX="5.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Andrew Polyak" textAlignment="CENTER">
@@ -44,33 +46,33 @@
                                                 <Font name="Nirmala UI Semilight" size="14.0" />
                                              </font>
                                           </Text>
-                                          <Text fill="WHITE" layoutX="24.0" layoutY="83.0" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwords should be created using a mix of different kinds of characters. They should be relatively long and should be difficult to crack. A length of 12 characters is generally recommened for a strong password. It is also important to use different passwords for different accounts, and it is likewise important to frequently updated them to avoid security risks to your accounts and personal data. " wrappingWidth="280.6728515625">
+                                          <Text fill="WHITE" layoutX="32.0" layoutY="72.0" lineSpacing="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwords should be created using a mix of different kinds of characters. They should be relatively long and should be difficult to crack. A length of 12 characters is generally recommened for a strong password. It is also important to use different passwords for different accounts, and it is likewise important to frequently updated them to avoid security risks to your accounts and personal data. " wrappingWidth="240.6728515625">
                                              <font>
-                                                <Font name="Tahoma" size="15.0" />
+                                                <Font name="Tahoma" size="13.0" />
                                              </font>
                                           </Text>
-                                          <Text fill="WHITE" layoutX="24.0" layoutY="402.0" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This password generation tool allows you to generate secure passwords and save them within the program along with your username data so that you will never forget your password again. You can also use the 'Update Selected Password' function to update existing passwords." wrappingWidth="280.6728515625">
+                                          <Text fill="WHITE" layoutX="32.0" layoutY="417.0" lineSpacing="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This password generation tool allows you to generate secure passwords and save them within the program along with your username data so that you will never forget your password again. You can also use the 'Update Selected Password' function to update existing passwords." wrappingWidth="240.6728515625">
                                              <font>
-                                                <Font name="Tahoma" size="15.0" />
+                                                <Font name="Tahoma" size="13.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="350.0" prefHeight="675.0" prefWidth="650.0">
+                                    <AnchorPane layoutX="300.0" prefHeight="680.0" prefWidth="700.0">
                                        <children>
-                                          <AnchorPane prefHeight="675.0" prefWidth="325.0">
+                                          <AnchorPane prefHeight="675.0" prefWidth="375.0">
                                              <children>
-                                                <Button layoutX="78.0" layoutY="368.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #99b898;" text="Generate Password">
+                                                <Button layoutX="103.0" layoutY="313.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #99b898;" text="Generate Password">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <Button layoutX="78.0" layoutY="576.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #99b898;" text="Save Password">
+                                                <Button layoutX="103.0" layoutY="574.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #99b898;" text="Save Password">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <RadioButton layoutX="14.0" layoutY="42.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Lowercase Letters">
+                                                <RadioButton layoutX="14.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Lowercase Letters">
                                                    <font>
                                                       <Font name="Tahoma" size="13.0" />
                                                    </font>
@@ -78,19 +80,102 @@
                                                       <ToggleGroup fx:id="letterCase" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton layoutX="173.0" layoutY="42.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Uppercase Letters" toggleGroup="$letterCase">
+                                                <RadioButton layoutX="14.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Uppercase Letters" toggleGroup="$letterCase">
                                                    <font>
                                                       <Font name="Tahoma" size="13.0" />
                                                    </font>
                                                 </RadioButton>
-                                                <Text fill="#2a363b" layoutX="89.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select letter case" textAlignment="CENTER">
+                                                <Text fill="#2a363b" layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Letter Case" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="Tahoma" size="20.0" />
                                                    </font>
                                                 </Text>
+                                                <Text fill="#2a363b" layoutX="59.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Craft Your Password" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma Bold" size="25.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2a363b" layoutX="210.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Characters" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <RadioButton layoutX="210.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="All Special Characters">
+                                                   <font>
+                                                      <Font name="Tahoma" size="13.0" />
+                                                   </font>
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="specialChars" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton layoutX="210.0" layoutY="128.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Limited Special Chars" toggleGroup="$specialChars">
+                                                   <font>
+                                                      <Font name="Tahoma" size="13.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <Text fill="#2a363b" layoutX="14.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <CheckBox layoutX="14.0" layoutY="218.0" mnemonicParsing="false" text="Include Numbers">
+                                                   <font>
+                                                      <Font name="Tahoma" size="13.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <Text fill="#2a363b" layoutX="210.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spaces" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <CheckBox layoutX="210.0" layoutY="218.0" mnemonicParsing="false" text="Include Spaces">
+                                                   <font>
+                                                      <Font name="Tahoma" size="13.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <Text fill="#2a363b" layoutX="7.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLACEHOLDER" textAlignment="CENTER" wrappingWidth="360.8046875">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2a363b" layoutX="7.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD PLACEHOLDER" textAlignment="CENTER" wrappingWidth="360.8046875">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2a363b" layoutX="14.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Website (optional): " textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField layoutX="186.0" layoutY="454.0" prefHeight="33.0" prefWidth="175.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Text fill="#2a363b" layoutX="14.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username (optional): " textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField layoutX="186.0" layoutY="508.0" prefHeight="33.0" prefWidth="175.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Text fill="#2a363b" layoutX="14.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Length " textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField layoutX="178.0" layoutY="258.0" prefHeight="33.0" prefWidth="175.0">
+                                                   <font>
+                                                      <Font name="Tahoma" size="17.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="325.0" layoutY="5.0" prefHeight="675.0" prefWidth="325.0">
+                                          <AnchorPane layoutX="375.0" prefHeight="675.0" prefWidth="325.0">
                                              <children>
                                                 <ListView layoutX="13.0" layoutY="38.0" prefHeight="510.0" prefWidth="300.0" />
                                                 <Button layoutX="63.0" layoutY="571.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #ff847c;" text="Update Selected Password">
@@ -101,6 +186,11 @@
                                                 <Text fill="#2a363b" layoutX="87.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saved Passwords" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="Tahoma" size="20.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2a363b" layoutX="52.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Based on the selected options within the 'Craft Your Password' section." textAlignment="CENTER" wrappingWidth="220.8046875">
+                                                   <font>
+                                                      <Font name="Tahoma" size="13.0" />
                                                    </font>
                                                 </Text>
                                              </children>
