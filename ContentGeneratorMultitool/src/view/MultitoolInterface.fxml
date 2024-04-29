@@ -44,7 +44,7 @@
                                           <ListView fx:id="savedPasswords" layoutX="72.0" layoutY="52.0" prefHeight="480.0" prefWidth="230.0" />
                                           <AnchorPane fx:id="updatePasswordPane" layoutX="17.0" layoutY="532.0" prefHeight="135.0" prefWidth="158.0">
                                              <children>
-                                                <Button fx:id="passwordUpdateBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: #63ADF2;" text="Update Selected Password" textFill="#00100b" wrapText="true">
+                                                <Button fx:id="passwordUpdateBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="130.0" style="-fx-background-color: #63ADF2;" text="Update Selected Password" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
@@ -58,7 +58,7 @@
                                           </AnchorPane>
                                           <AnchorPane fx:id="removePasswordPane" layoutX="199.0" layoutY="532.0" prefHeight="110.0" prefWidth="158.0">
                                              <children>
-                                                <Button fx:id="passwordRemoveBtn" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Password" textFill="#00100b" wrapText="true">
+                                                <Button fx:id="passwordRemoveBtn" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Password" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
@@ -69,7 +69,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="625.0">
                                        <children>
-                                          <Button fx:id="passwordGenerateBtn" layoutX="421.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Passwords" textFill="#00100b">
+                                          <Button fx:id="passwordGenerateBtn" layoutX="421.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Passwords" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
@@ -155,23 +155,23 @@
                                                       <Font name="Tahoma" size="17.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="passwordLength" layoutX="15.0" layoutY="46.0" prefHeight="33.0" prefWidth="130.0" promptText="ex: 1, 15, 24">
+                                                <TextField fx:id="passwordLength" layoutX="15.0" layoutY="47.0" prefHeight="35.0" prefWidth="130.0" promptText="ex: 1, 15, 24">
                                                    <font>
                                                       <Font name="Tahoma" size="12.0" />
                                                    </font>
                                                 </TextField>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="displayPasswordPane" layoutX="13.0" layoutY="354.0" prefHeight="190.0" prefWidth="600.0">
+                                          <AnchorPane fx:id="displayPasswordPane" layoutX="13.0" layoutY="354.0" prefHeight="280.0" prefWidth="600.0">
                                              <children>
-                                                <AnchorPane layoutY="14.0" prefHeight="100.0" prefWidth="340.0">
+                                                <AnchorPane layoutX="130.0" layoutY="79.0" prefHeight="100.0" prefWidth="340.0">
                                                    <children>
                                                       <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Website (optional)" textAlignment="CENTER">
                                                          <font>
                                                             <Font name="Tahoma" size="17.0" />
                                                          </font>
                                                       </Text>
-                                                      <TextField fx:id="passwordWebsite" layoutX="179.0" layoutY="8.0" prefHeight="33.0" prefWidth="150.0" promptText="ex: Netflix">
+                                                      <TextField fx:id="passwordWebsite" layoutX="179.0" layoutY="8.0" prefHeight="35.0" prefWidth="150.0" promptText="ex: Netflix">
                                                          <font>
                                                             <Font name="Tahoma" size="12.0" />
                                                          </font>
@@ -181,19 +181,23 @@
                                                             <Font name="Tahoma" size="17.0" />
                                                          </font>
                                                       </Text>
-                                                      <TextField fx:id="passwordUsername" layoutX="179.0" layoutY="54.0" prefHeight="33.0" prefWidth="150.0" promptText="ex: johnsmith1000">
+                                                      <TextField fx:id="passwordUsername" layoutX="179.0" layoutY="54.0" prefHeight="35.0" prefWidth="150.0" promptText="ex: johnsmith1000">
                                                          <font>
                                                             <Font name="Tahoma" size="12.0" />
                                                          </font>
                                                       </TextField>
                                                    </children>
                                                 </AnchorPane>
-                                                <ListView fx:id="generatedPasswords" layoutX="348.0" layoutY="14.0" prefHeight="160.0" prefWidth="230.0" />
-                                                <Button fx:id="passwordSaveBtn" layoutX="70.0" layoutY="139.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Password" textFill="#00100b">
+                                                <Button fx:id="passwordSaveBtn" layoutX="200.0" layoutY="203.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Password" textFill="WHITE">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
+                                                <TextField fx:id="generatedPasswordContainer" editable="false" layoutX="175.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated password will appear here">
+                                                   <font>
+                                                      <Font name="Tahoma" size="12.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fx:id="passwordGenMsg" fill="#2a363b" layoutX="7.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="610.41259765625">
@@ -231,24 +235,33 @@
                                  <children>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="500.0">
                                        <children>
-                                          <Button fx:id="nameGenerateBtn" layoutX="228.0" layoutY="33.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Names" textFill="#00100b">
+                                          <Button fx:id="nameGenerateBtn" layoutX="228.0" layoutY="189.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Names" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
                                           </Button>
-                                          <AnchorPane fx:id="displayNamePane" layoutX="183.0" layoutY="76.0" prefHeight="530.0" prefWidth="260.0">
+                                          <AnchorPane fx:id="displayNamePane" layoutX="183.0" layoutY="280.0" prefHeight="110.0" prefWidth="260.0">
                                              <children>
-                                                <ListView fx:id="generatedNames" layoutX="15.0" layoutY="14.0" prefHeight="440.0" prefWidth="230.0" />
-                                                <Button fx:id="nameSaveBtn" layoutX="29.0" layoutY="467.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Name" textFill="#00100b">
+                                                <Button fx:id="nameSaveBtn" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Name" textFill="WHITE">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
+                                                <TextField fx:id="generatedNameContainer" editable="false" layoutX="5.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated name will appear here">
+                                                   <font>
+                                                      <Font name="Tahoma" size="12.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="#00100b" layoutX="6.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Andrew Polyak" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tw Cen MT" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="nameGenMsg" fill="#2a363b" layoutX="90.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
+                                             <font>
+                                                <Font name="Tahoma" size="17.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -263,7 +276,7 @@
                                           </Text>
                                           <AnchorPane fx:id="removeNamePane" layoutX="78.0" layoutY="530.0" prefHeight="70.0" prefWidth="230.0">
                                              <children>
-                                                <Button fx:id="nameRemoveBtn" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Name" textFill="#00100b" wrapText="true">
+                                                <Button fx:id="nameRemoveBtn" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Name" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
@@ -272,11 +285,6 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <Text fx:id="nameGenMsg" fill="#2a363b" layoutX="273.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
-                                       <font>
-                                          <Font name="Tahoma" size="17.0" />
-                                       </font>
-                                    </Text>
                                  </children>
                               </AnchorPane>
                            </children>
@@ -300,21 +308,30 @@
                                  <children>
                                     <AnchorPane layoutX="333.0" layoutY="125.0" prefHeight="485.0" prefWidth="334.0">
                                        <children>
-                                          <Button fx:id="emailGenerateBtn" layoutX="82.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Emails" textFill="#00100b">
+                                          <Button fx:id="emailGenerateBtn" layoutX="82.0" layoutY="105.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Emails" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
                                           </Button>
-                                          <AnchorPane fx:id="displayEmailPane" layoutX="37.0" layoutY="49.0" prefHeight="427.0" prefWidth="260.0">
+                                          <AnchorPane fx:id="displayEmailPane" layoutX="37.0" layoutY="188.0" prefHeight="110.0" prefWidth="260.0">
                                              <children>
-                                                <ListView fx:id="generatedEmails" layoutX="14.0" layoutY="14.0" prefHeight="344.0" prefWidth="230.0" />
-                                                <Button fx:id="emailSaveBtn" layoutX="29.0" layoutY="372.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Email" textFill="#00100b">
+                                                <Button fx:id="emailSaveBtn" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Email" textFill="WHITE">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
+                                                <TextField fx:id="generatedEmailContainer" editable="false" layoutX="6.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated email will appear here">
+                                                   <font>
+                                                      <Font name="Tahoma" size="12.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
+                                          <Text fx:id="emailGenMsg" fill="#2a363b" layoutX="-23.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="380.41259765625">
+                                             <font>
+                                                <Font name="Tahoma" size="17.0" />
+                                             </font>
+                                          </Text>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutX="667.0" layoutY="3.0" prefHeight="670.0" prefWidth="333.0">
@@ -327,7 +344,7 @@
                                           </Text>
                                           <AnchorPane fx:id="removeEmailPane" layoutX="52.0" layoutY="530.0" prefHeight="110.0" prefWidth="230.0">
                                              <children>
-                                                <Button fx:id="emailRemoveBtn" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Email" textFill="#00100b" wrapText="true">
+                                                <Button fx:id="emailRemoveBtn" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Email" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
@@ -344,19 +361,14 @@
                                                 <Font name="Tw Cen MT" size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text fill="#2a363b" layoutX="48.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a saved name to generate an email for (optional)" textAlignment="CENTER" wrappingWidth="237.67236328125">
+                                          <Text fill="#2a363b" layoutX="46.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a saved name to generate an email for (optional)" textAlignment="CENTER" wrappingWidth="241.67236328125">
                                              <font>
                                                 <Font name="Tahoma" size="17.0" />
                                              </font>
                                           </Text>
                                        </children>
                                     </AnchorPane>
-                                    <Text fx:id="emailGenMsg" fill="#2a363b" layoutX="273.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
-                                       <font>
-                                          <Font name="Tahoma" size="17.0" />
-                                       </font>
-                                    </Text>
-                                    <AnchorPane layoutX="333.0" layoutY="14.0" prefHeight="115.0" prefWidth="334.0">
+                                    <AnchorPane layoutX="333.0" layoutY="14.0" prefHeight="198.0" prefWidth="334.0">
                                        <children>
                                           <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select preferred email provider" textAlignment="CENTER">
                                              <font>
@@ -383,16 +395,36 @@
                                                 <Font name="Tahoma" size="12.0" />
                                              </font>
                                           </CheckBox>
-                                          <Text fill="#2a363b" layoutX="14.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Custom (write format):" textAlignment="CENTER">
+                                          <Text fill="#2a363b" layoutX="14.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Custom (write format):" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tahoma" size="17.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="customEmailProvider" layoutX="196.0" layoutY="73.0" prefHeight="33.0" prefWidth="116.0" promptText="ex: shaw, iCloud">
+                                          <TextField fx:id="customEmailProvider" layoutX="196.0" layoutY="117.0" prefHeight="35.0" prefWidth="116.0" promptText="ex: shaw, telus">
                                              <font>
                                                 <Font name="Tahoma" size="12.0" />
                                              </font>
                                           </TextField>
+                                          <CheckBox fx:id="emailAddressICloud" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="iCloud">
+                                             <font>
+                                                <Font name="Tahoma" size="12.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="emailAddressITuta" layoutX="90.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Tuta">
+                                             <font>
+                                                <Font name="Tahoma" size="12.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="emailAddressYandex" layoutX="176.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Yandex">
+                                             <font>
+                                                <Font name="Tahoma" size="12.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="emailAddressZoho" layoutX="254.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Zoho">
+                                             <font>
+                                                <Font name="Tahoma" size="12.0" />
+                                             </font>
+                                          </CheckBox>
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -401,13 +433,13 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="Birthday Generator">
+                  <Tab text="Name Generator">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #63ADF2;">
                                  <children>
-                                    <Text fill="#00100b" layoutX="250.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Random Birthday Generator" textAlignment="CENTER">
+                                    <Text fill="#00100b" layoutX="271.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Random Name Generator" textAlignment="CENTER">
                                        <font>
                                           <Font name="Tw Cen MT Bold" size="43.0" />
                                        </font>
@@ -418,24 +450,33 @@
                                  <children>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="500.0">
                                        <children>
-                                          <Button fx:id="nameGenerateBtn1" layoutX="228.0" layoutY="33.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Names" textFill="#00100b">
+                                          <Button fx:id="nameGenerateBtn1" layoutX="228.0" layoutY="189.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Names" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
                                           </Button>
-                                          <AnchorPane fx:id="displayNamePane1" layoutX="183.0" layoutY="76.0" prefHeight="530.0" prefWidth="260.0">
+                                          <AnchorPane fx:id="displayNamePane1" layoutX="183.0" layoutY="280.0" prefHeight="110.0" prefWidth="260.0">
                                              <children>
-                                                <ListView fx:id="generatedNames1" layoutX="15.0" layoutY="14.0" prefHeight="440.0" prefWidth="230.0" />
-                                                <Button fx:id="nameSaveBtn1" layoutX="29.0" layoutY="467.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Name" textFill="#00100b">
+                                                <Button fx:id="nameSaveBtn1" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Name" textFill="WHITE">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
+                                                <TextField fx:id="generatedNameContainer1" editable="false" layoutX="5.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated name will appear here">
+                                                   <font>
+                                                      <Font name="Tahoma" size="12.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="#00100b" layoutX="6.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Andrew Polyak" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tw Cen MT" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="nameGenMsg1" fill="#2a363b" layoutX="90.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
+                                             <font>
+                                                <Font name="Tahoma" size="17.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -450,7 +491,7 @@
                                           </Text>
                                           <AnchorPane fx:id="removeNamePane1" layoutX="78.0" layoutY="530.0" prefHeight="70.0" prefWidth="230.0">
                                              <children>
-                                                <Button fx:id="nameRemoveBtn1" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Name" textFill="#00100b" wrapText="true">
+                                                <Button fx:id="nameRemoveBtn1" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Name" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
@@ -459,11 +500,6 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <Text fx:id="nameGenMsg1" fill="#2a363b" layoutX="273.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
-                                       <font>
-                                          <Font name="Tahoma" size="17.0" />
-                                       </font>
-                                    </Text>
                                  </children>
                               </AnchorPane>
                            </children>
