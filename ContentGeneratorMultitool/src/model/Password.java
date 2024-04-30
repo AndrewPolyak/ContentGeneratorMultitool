@@ -10,22 +10,22 @@ package model;
 public class Password {
 
 	// The constant String value LETTERS_LOWERCASE contains the entire lower-case English alphabet (a-z)
-	private static final String LETTERS_LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+	private final String LETTERS_LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
 	
 	// The constant String value LETTERS_UPPERCASE contains the entire upper-case English alphabet (A-Z)
-	private static final String LETTERS_UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private final String LETTERS_UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	// The constant String value NUMBERS contains all Hindu-Arabic numbers (0-9)
-	private static final String NUMBERS = "0123456789";
+	private final String NUMBERS = "0123456789";
 	
 	// The constant String value SPECIAL_CHARACTERS_ALL contains all special characters commonly found on keyboards
-	private static final String SPECIAL_CHARACTERS_ALL = "!@#$%^&*()_-+={[}]:;<,>.?/~`|\\\"\'";
+	private final String SPECIAL_CHARACTERS_ALL = "!@#$%^&*()_-+={[}]:;<,>.?/~`|\\\"\'";
 	
 	// The constant String value SPECIAL_CHARACTERS_LTD contains all special characters commonly found on keyboards except for the following: " ' \
-	private static final String SPECIAL_CHARACTERS_LTD = "!@#$%^&*()_-+={[}]:;<,>.?/~`|";
+	private final String SPECIAL_CHARACTERS_LTD = "!@#$%^&*()_-+={[}]:;<,>.?/~`|";
 	
 	// The constant String value SPACE contains a space character
-	private static final String SPACE = " ";
+	private final String SPACE = " ";
 	
 	
 	/**
@@ -39,7 +39,7 @@ public class Password {
 	 * 
 	 * @return TODO
 	 */
-	public static String getLettersLowercase() {
+	public String getLettersLowercase() {
 		return LETTERS_LOWERCASE;
 	}
 
@@ -49,7 +49,7 @@ public class Password {
 	 * 
 	 * @return TODO
 	 */
-	public static String getLettersUppercase() {
+	public String getLettersUppercase() {
 		return LETTERS_UPPERCASE;
 	}
 
@@ -59,7 +59,7 @@ public class Password {
 	 * 
 	 * @return
 	 */
-	public static String getNumbers() {
+	public String getNumbers() {
 		return NUMBERS;
 	}
 
@@ -69,7 +69,7 @@ public class Password {
 	 * 
 	 * @return TODO
 	 */
-	public static String getSpecialCharactersAll() {
+	public String getSpecialCharactersAll() {
 		return SPECIAL_CHARACTERS_ALL;
 	}
 
@@ -79,7 +79,7 @@ public class Password {
 	 * 
 	 * @return TODO
 	 */
-	public static String getSpecialCharactersLtd() {
+	public String getSpecialCharactersLtd() {
 		return SPECIAL_CHARACTERS_LTD;
 	}
 
@@ -89,7 +89,7 @@ public class Password {
 	 * 
 	 * @return TODO
 	 */
-	public static String getSpace() {
+	public String getSpace() {
 		return SPACE;
 	}
 	
