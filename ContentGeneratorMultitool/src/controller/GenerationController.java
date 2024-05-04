@@ -2,6 +2,7 @@ package controller;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import model.Password;
 
@@ -9,13 +10,16 @@ import model.Password;
 /**
  * The GenerationController class contains the logic for randomly generating content within the program
  * 
- * @version 04/30/2024
+ * @version 05/01/2024
  * @author Andrew Polyak
  */
 public class GenerationController {
 	
 	// password is an instance of the Password class which contains all of the data for creating a password
 	Password password;
+	
+	// TODO
+	Calendar calendar;
 	
 	/*
 	 * randomizer is an instance of the SecureRandom class which facilitates cryptographically strong pseudo-random number generation
@@ -27,10 +31,11 @@ public class GenerationController {
 	
 	/**
 	 * The GenerationController constructor <br>
-	 * Instantiates password and randomizer, which are, respectively, instances of Password and SecureRandom
+	 * TODO
 	 */
 	public GenerationController() {
 		password = new Password();
+		calendar = Calendar.getInstance();
 		randomizer = new SecureRandom();
 	}
 	
@@ -176,5 +181,41 @@ public class GenerationController {
 		return email;
 	}
 	
+	
+	
+	public String generateBirthday(int lowerAge, int upperAge) {
+		
+		// TODO
+		String birthday;
+		
+		String month; // TODO
+		String date; // TODO
+		String year; // TODO
+		
+		// TODO
+		int randomYear = randomizer.nextInt(upperAge - lowerAge) + lowerAge;
+		
+		// TODO
+		int randomDate = randomizer.nextInt(31);
+		
+		// TODO
+		int randomMonth = randomizer.nextInt(12);
+		
+		// TODO
+		calendar.add(Calendar.YEAR, -randomYear);
+		calendar.add(Calendar.MONTH, randomMonth);
+		calendar.add(Calendar.DATE, randomDate);
+		
+		// TODO
+		String[] splittedDate = calendar.getTime().toString().split(" ");
+		month = splittedDate[1];
+		date = splittedDate[2];
+		year = splittedDate[5];
+		
+		// Format the data
+		birthday = month + "/" + date + "/" + year;
+		
+		return birthday;
+	}
 	
 }

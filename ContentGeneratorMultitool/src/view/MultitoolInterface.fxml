@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InterfaceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MultitoolController">
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
@@ -450,19 +451,19 @@
                                  <children>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="500.0">
                                        <children>
-                                          <Button fx:id="nameGenerateBtn1" layoutX="228.0" layoutY="189.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Names" textFill="WHITE">
+                                          <Button fx:id="birthdayGenerateBtn" layoutX="228.0" layoutY="262.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Birthday" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
                                           </Button>
-                                          <AnchorPane fx:id="displayNamePane1" layoutX="183.0" layoutY="280.0" prefHeight="110.0" prefWidth="260.0">
+                                          <AnchorPane fx:id="displayBirthdayPane" layoutX="183.0" layoutY="335.0" prefHeight="110.0" prefWidth="260.0">
                                              <children>
-                                                <Button fx:id="nameSaveBtn1" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Selected Name" textFill="WHITE">
+                                                <Button fx:id="birthdaySaveBtn" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Birthday" textFill="WHITE">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <TextField fx:id="generatedNameContainer1" editable="false" layoutX="5.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated name will appear here">
+                                                <TextField fx:id="generatedBirthdayContainer" editable="false" layoutX="5.0" layoutY="14.0" prefHeight="35.0" prefWidth="250.0" promptText="Your generated birthday will appear here">
                                                    <font>
                                                       <Font name="Tahoma" size="12.0" />
                                                    </font>
@@ -474,7 +475,24 @@
                                                 <Font name="Tw Cen MT" size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="nameGenMsg1" fill="#2a363b" layoutX="90.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
+                                          <Text fx:id="birthdayGenMsg" fill="#2a363b" layoutX="86.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
+                                             <font>
+                                                <Font name="Tahoma" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Slider fx:id="ageUpperRange" blockIncrement="1.0" layoutX="202.0" layoutY="163.0" majorTickUnit="5.0" prefHeight="38.0" prefWidth="223.0" showTickLabels="true" value="75.0" />
+                                          <Text fx:id="birthdayRangeMsg" fill="#2a363bb8" layoutX="124.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between X and X years placeholder" textAlignment="RIGHT" wrappingWidth="300.41259765625">
+                                             <font>
+                                                <Font name="Tahoma" size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Slider fx:id="ageLowerRange" blockIncrement="1.0" layoutX="202.0" layoutY="119.0" majorTickUnit="5.0" prefHeight="38.0" prefWidth="223.0" showTickLabels="true" value="25.0" />
+                                          <Text fill="#2a363b" layoutX="67.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper Range" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Tahoma" size="17.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fill="#2a363b" layoutX="67.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lower Range" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tahoma" size="17.0" />
                                              </font>
@@ -483,15 +501,15 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="500.0" layoutY="3.0" prefHeight="615.0" prefWidth="500.0">
                                        <children>
-                                          <ListView fx:id="savedNames1" layoutX="78.0" layoutY="90.0" prefHeight="440.0" prefWidth="230.0" />
-                                          <Text fill="#00100b" layoutX="101.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saved Names" textAlignment="CENTER">
+                                          <ListView fx:id="savedBirthdays" layoutX="78.0" layoutY="90.0" prefHeight="440.0" prefWidth="230.0" />
+                                          <Text fill="#00100b" layoutX="85.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saved Birthdays" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tw Cen MT Bold" size="32.0" />
                                              </font>
                                           </Text>
                                           <AnchorPane fx:id="removeNamePane1" layoutX="78.0" layoutY="530.0" prefHeight="70.0" prefWidth="230.0">
                                              <children>
-                                                <Button fx:id="nameRemoveBtn1" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Name" textFill="WHITE" wrapText="true">
+                                                <Button fx:id="birthdayRemoveBtn" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #DE3C4B;" text="Remove Selected Birthday" textFill="WHITE" wrapText="true">
                                                    <font>
                                                       <Font name="Tahoma" size="14.0" />
                                                    </font>

@@ -17,25 +17,16 @@ import model.Password;
 /**
  * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling logic, data loading/saving, etc.
  * 
- * @version 04/24/2024
+ * @version 05/01/2024
  * @author Andrew Polyak
  */
 public class MultitoolController {
 	
-	// password is an instance of the Password class which contains all the data for creating a password
-	private Password password;
-	
-	// name is an instance of the Name class
-	private Name name;
-	
-	// email is an instance of the Email class
-	private Email email;
-	
-	// birthday is an instance of the Birthday class
-	private Birthday birthday;
-	
 	// passwords is an ArrayList of String values which represent all user-saved passwords
 	private ArrayList<String> passwords;
+	
+	//TODO
+	private GenerationController generate;
 	
 	// names is an ArrayList of String values which represent all user-saved names
 	private ArrayList<String> names;
@@ -55,13 +46,11 @@ public class MultitoolController {
 	
 	/**
 	 * The MultitoolController constructor <br>
-	 * Loads the user's save data and instantiates objects for Password, Name, Email, and Birthday to facilitate content generation
+	 * TODO
 	 */
 	public MultitoolController() {
-		password = new Password();
-		name = new Name();
-		email = new Email();
-		birthday = new Birthday();
+		
+		generate = new GenerationController();
 		
 		// Load saved data
 		loadPasswordData();
