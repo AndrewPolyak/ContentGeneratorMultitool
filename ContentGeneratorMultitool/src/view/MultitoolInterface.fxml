@@ -70,7 +70,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="625.0">
                                        <children>
-                                          <Button fx:id="passwordGenerateBtn" layoutX="236.0" layoutY="287.0" mnemonicParsing="false" onAction="#generatePassword" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Password" textFill="WHITE">
+                                          <Button fx:id="passwordGenerateBtn" layoutX="236.0" layoutY="323.0" mnemonicParsing="false" onAction="#generatePassword" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Password" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
@@ -80,14 +80,14 @@
                                                 <Font name="Tw Cen MT Bold" size="32.0" />
                                              </font>
                                           </Text>
-                                          <AnchorPane layoutX="221.0" layoutY="79.0" prefHeight="125.0" prefWidth="200.0">
+                                          <AnchorPane layoutX="221.0" layoutY="72.0" prefHeight="125.0" prefWidth="200.0">
                                              <children>
                                                 <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Characters" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="Tahoma" size="17.0" />
                                                    </font>
                                                 </Text>
-                                                <RadioButton fx:id="passwordAllSpecChars" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="All special characters">
+                                                <RadioButton fx:id="passwordAllSpecChars" layoutX="14.0" layoutY="42.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" selected="true" text="All special characters">
                                                    <font>
                                                       <Font name="Tahoma" size="12.0" />
                                                    </font>
@@ -95,14 +95,19 @@
                                                       <ToggleGroup fx:id="specialChars" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton fx:id="passwordLtdSpecialChars" layoutX="14.0" layoutY="78.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Limited special chars" toggleGroup="$specialChars">
+                                                <RadioButton fx:id="passwordLtdSpecialChars" layoutX="14.0" layoutY="69.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Limited special chars" toggleGroup="$specialChars">
+                                                   <font>
+                                                      <Font name="Tahoma" size="12.0" />
+                                                   </font>
+                                                </RadioButton>
+                                                <RadioButton layoutX="14.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="No Special Characters" toggleGroup="$specialChars">
                                                    <font>
                                                       <Font name="Tahoma" size="12.0" />
                                                    </font>
                                                 </RadioButton>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="14.0" layoutY="79.0" prefHeight="125.0" prefWidth="200.0">
+                                          <AnchorPane layoutX="36.0" layoutY="73.0" prefHeight="125.0" prefWidth="200.0">
                                              <children>
                                                 <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Letter Case" textAlignment="CENTER">
                                                    <font>
@@ -121,21 +126,21 @@
                                                 </CheckBox>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="378.0" layoutY="179.0" prefHeight="125.0" prefWidth="160.0">
+                                          <AnchorPane layoutX="378.0" layoutY="198.0" prefHeight="125.0" prefWidth="160.0">
                                              <children>
                                                 <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spaces" textAlignment="CENTER">
                                                    <font>
                                                       <Font name="Tahoma" size="17.0" />
                                                    </font>
                                                 </Text>
-                                                <CheckBox fx:id="passwordSpaces" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" selected="true" text="Include spaces">
+                                                <CheckBox fx:id="passwordSpaces" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" text="Include spaces">
                                                    <font>
                                                       <Font name="Tahoma" size="12.0" />
                                                    </font>
                                                 </CheckBox>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="104.0" layoutY="183.0" prefHeight="100.0" prefWidth="160.0">
+                                          <AnchorPane layoutX="113.0" layoutY="198.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
                                                 <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numbers" textAlignment="CENTER">
                                                    <font>
@@ -149,7 +154,7 @@
                                                 </CheckBox>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="421.0" layoutY="79.0" prefHeight="100.0" prefWidth="160.0">
+                                          <AnchorPane layoutX="421.0" layoutY="72.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
                                                 <Text fill="#2a363b" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Length" textAlignment="CENTER">
                                                    <font>
@@ -163,7 +168,7 @@
                                                 </TextField>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane fx:id="displayPasswordPane" layoutX="21.0" layoutY="363.0" prefHeight="244.0" prefWidth="600.0">
+                                          <AnchorPane fx:id="displayPasswordPane" layoutX="21.0" layoutY="363.0" prefHeight="244.0" prefWidth="600.0" visible="false">
                                              <children>
                                                 <AnchorPane layoutX="130.0" layoutY="75.0" prefHeight="100.0" prefWidth="340.0">
                                                    <children>
@@ -201,9 +206,9 @@
                                                 </TextField>
                                              </children>
                                           </AnchorPane>
-                                          <Text fx:id="passwordGenMsg" fill="#2a363b" layoutX="16.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="610.41259765625">
+                                          <Text fx:id="passwordGenMsg" layoutX="16.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="610.41259765625">
                                              <font>
-                                                <Font name="Tahoma" size="17.0" />
+                                                <Font name="Tahoma Bold" size="14.0" />
                                              </font>
                                           </Text>
                                           <Text fill="#00100b" layoutX="6.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Andrew Polyak" textAlignment="CENTER">

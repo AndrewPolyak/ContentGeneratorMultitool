@@ -7,7 +7,7 @@ package model;
  * @version 4/24/2024
  * @author Andrew Polyak
  */
-public class Password {
+public class Password extends GeneratedData {
 
 	// The constant String value LETTERS_LOWERCASE contains the entire lower-case English alphabet (a-z)
 	private final String LETTERS_LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
@@ -91,16 +91,6 @@ public class Password {
 	 */
 	public String getSpace() {
 		return SPACE;
-	}
-	
-	
-	/**
-	 * The formatData method returns the parameter with a newline so as to save the data in the correct structure
-	 * @param password a String value representing the password saved by the user
-	 * @return password + newline
-	 */
-	public String formatData(String password) {
-		return password + "/n";
 	}
 	
 }

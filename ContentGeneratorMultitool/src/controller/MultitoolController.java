@@ -18,9 +18,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.Birthday;
 import model.Email;
+import model.GeneratedData;
 import model.Name;
 import model.Password;
 
@@ -37,34 +39,34 @@ public class MultitoolController {
 	private ArrayList<String> passwords;
 	
 	// TODO
-	private Password password;
+	private GeneratedData password;
 	
 	// TODO
-	private Name name;
+	private GeneratedData name;
 	
 	// TODO
-	private Email email;
+	private GeneratedData email;
 	
 	// TODO
-	private Birthday birthday;
+	private GeneratedData birthday;
 	
 	//TODO
 	private GenerationController generate;
 	
 	// names is an ArrayList of String values which represent all user-saved names
-	private ArrayList<Name> names;
+	private ArrayList<String> names;
 	
 	// emails is an ArrayList of String values which represent all user-saved emails
-	private ArrayList<Email> emails;
+	private ArrayList<String> emails;
 	
 	// birthdays is an ArrayList of String values which represent all user-saved birthdays
-	private ArrayList<Birthday> birthdays;
+	private ArrayList<String> birthdays;
 	
 	// firstNames is an ArrayList of String values which represents all possible first names which can be randomly generated
-	private ArrayList<Name> firstNames;
+	private ArrayList<String> firstNames;
 	
 	// lastNames is an ArrayList of String values which represents all possible last names which can be randomly generated
-	private ArrayList<Name> lastNames;
+	private ArrayList<String> lastNames;
 	
 	// TODO
     @FXML
@@ -268,23 +270,23 @@ public class MultitoolController {
 
     // TODO
     @FXML
-    private ListView<Birthday> savedBirthdays;
+    private ListView<String> savedBirthdays;
 
     // TODO
     @FXML
-    private ListView<Email> savedEmails;
+    private ListView<String> savedEmails;
 
     // TODO
     @FXML
-    private ListView<Name> savedNames;
+    private ListView<String> savedNames;
 
     // TODO
     @FXML
-    private ListView<Name> savedNamesForEmail;
+    private ListView<String> savedNamesForEmail;
 
     // TODO
     @FXML
-    private ListView<Password> savedPasswords;
+    private ListView<String> savedPasswords;
 
     // TODO
     @FXML
@@ -300,8 +302,10 @@ public class MultitoolController {
 	 * TODO
 	 */
 	public MultitoolController() {
+		// Instantiate generate, an instance of GenerationController, to manage generating the main content types
 		generate = new GenerationController();
 		
+		// Instantiate the main content types
 		password = new Password();
 		name = new Name();
 		email = new Email();
@@ -358,12 +362,92 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void generatePassword(ActionEvent event) {
-
+    private void generatePassword(ActionEvent event) {
+    	passwordGenerateBtn.setOnMouseClicked(e -> {
+    		
+    		String generatedPassword; // generatedPassword is a String value representing the final generated password
+    		
+    		// Initialize password parameter check-selections to false
+    		boolean uppercase = false;
+        	boolean lowercase = false;
+        	boolean allSpecChar = false;
+        	boolean ltdSpecChar = false;
+        	boolean numbers = false;
+        	boolean spaces = false;
+        	
+        	// Initialize and validate length
+        	String length = passwordLength.getText();
+        	boolean validLengthInput = validDigit(length);;
+    		
+        	// If the length input is valid, then process the parameters
+    		if (validLengthInput) { 
+    			// Collect letter case parameters
+        		if (passwordCaseUpper.isSelected()) {
+        			uppercase = true;
+        		}
+        		if (passwordCaseLower.isSelected()) {
+        			lowercase = true;
+        		}
+        		
+        		// Collect special character parameters
+        		if (passwordAllSpecChars.isSelected()) {
+        			allSpecChar = true;
+        		} else if (passwordLtdSpecialChars.isSelected()) {
+        			ltdSpecChar = true;
+        		}
+        		
+        		// Collect number parameters
+        		if (passwordNumbers.isSelected()) {
+        			numbers = true;
+        		}
+        		
+        		// Collect space parameters
+        		if (passwordSpaces.isSelected()) {
+        			spaces = true;
+        		}
+    			
+        		// Generate the password
+    			generatedPassword = generate.generatePassword(uppercase, lowercase, allSpecChar, ltdSpecChar, numbers, spaces, Integer.parseInt(length));
+        		
+    			// Inform the user that the password was generated
+    			passwordGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+        		passwordGenMsg.setText("Secure password generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+        		
+        		// Add the generated password's value to the relevant text box
+        		generatedPasswordContainer.setText(generatedPassword);
+        		
+        		// Display the password to the user
+        		displayPasswordPane.setVisible(true);
+    		} else {
+    			// If the length is invalid, inform the user that it must be addressed
+    			passwordGenMsg.setFill(Color.rgb(228, 73, 73, 1));
+    			passwordGenMsg.setText("Invalid length input"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    			
+    			// Hide the generated password pane from then user (there is nothing to display)
+    			displayPasswordPane.setVisible(false);
+    		}	
+    	});
     }
 
     
     /**
+     * TODO
+     * 
+     * @param length
+     * @return
+     */
+    private boolean validDigit(String input) {
+    	// If the input is a digit, return true; otherwise return false
+    	if (!input.matches("\\d+")) {
+    		return false;
+    	} else {
+    		return true;
+    	}
+    	
+	}
+
+
+	/**
 	 * TODO
 	 * 
 	 * @param event

@@ -1,5 +1,7 @@
 package model;
 
-public class Email {
+public class Email extends GeneratedData {
 
+	public Email() { }
+	
 }

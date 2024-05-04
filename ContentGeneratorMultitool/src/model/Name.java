@@ -1,5 +1,7 @@
 package model;
 
-public class Name {
+public class Name extends GeneratedData {
 
+	public Name() { }
+	
 }

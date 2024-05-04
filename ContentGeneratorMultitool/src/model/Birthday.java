@@ -1,5 +1,7 @@
 package model;
 
-public class Birthday {
+public class Birthday extends GeneratedData {
 
+	public Birthday() { }
+	
 }
