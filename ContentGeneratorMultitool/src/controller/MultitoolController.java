@@ -8,6 +8,17 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import model.Birthday;
 import model.Email;
 import model.Name;
@@ -25,23 +36,263 @@ public class MultitoolController {
 	// passwords is an ArrayList of String values which represent all user-saved passwords
 	private ArrayList<String> passwords;
 	
+	// TODO
+	private Password password;
+	
+	// TODO
+	private Name name;
+	
+	// TODO
+	private Email email;
+	
+	// TODO
+	private Birthday birthday;
+	
 	//TODO
 	private GenerationController generate;
 	
 	// names is an ArrayList of String values which represent all user-saved names
-	private ArrayList<String> names;
+	private ArrayList<Name> names;
 	
 	// emails is an ArrayList of String values which represent all user-saved emails
-	private ArrayList<String> emails;
+	private ArrayList<Email> emails;
 	
 	// birthdays is an ArrayList of String values which represent all user-saved birthdays
-	private ArrayList<String> birthdays;
+	private ArrayList<Birthday> birthdays;
 	
 	// firstNames is an ArrayList of String values which represents all possible first names which can be randomly generated
-	private ArrayList<String> firstNames;
+	private ArrayList<Name> firstNames;
 	
 	// lastNames is an ArrayList of String values which represents all possible last names which can be randomly generated
-	private ArrayList<String> lastNames;
+	private ArrayList<Name> lastNames;
+	
+	// TODO
+    @FXML
+    private Slider ageLowerRange;
+
+    // TODO
+    @FXML
+    private Slider ageUpperRange;
+
+    // TODO
+    @FXML
+    private Text birthdayGenMsg;
+
+    // TODO
+    @FXML
+    private Button birthdayGenerateBtn;
+    
+    // TODO
+    @FXML
+    private Text birthdayRangeMsg;
+
+    // TODO
+    @FXML
+    private Button birthdayRemoveBtn;
+
+    // TODO
+    @FXML
+    private Button birthdaySaveBtn;
+
+    // TODO
+    @FXML
+    private TextField customEmailProvider;
+
+    // TODO
+    @FXML
+    private AnchorPane displayBirthdayPane;
+
+    // TODO
+    @FXML
+    private AnchorPane displayEmailPane;
+
+    // TODO
+    @FXML
+    private AnchorPane displayNamePane;
+
+    // TODO
+    @FXML
+    private AnchorPane displayPasswordPane;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressGmail;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressICloud;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressITuta;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressOutlook;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressProton;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressYahoo;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressYandex;
+
+    // TODO
+    @FXML
+    private CheckBox emailAddressZoho;
+
+    // TODO
+    @FXML
+    private Text emailGenMsg;
+
+    // TODO
+    @FXML
+    private Button emailGenerateBtn;
+
+    // TODO
+    @FXML
+    private Button emailRemoveBtn;
+
+    // TODO
+    @FXML
+    private Button emailSaveBtn;
+
+    // TODO
+    @FXML
+    private TextField generatedBirthdayContainer;
+
+    // TODO
+    @FXML
+    private TextField generatedEmailContainer;
+
+    // TODO
+    @FXML
+    private TextField generatedNameContainer;
+
+    // TODO
+    @FXML
+    private TextField generatedPasswordContainer;
+
+    // TODO
+    @FXML
+    private Text nameGenMsg;
+
+    // TODO
+    @FXML
+    private Button nameGenerateBtn;
+
+    // TODO
+    @FXML
+    private Button nameRemoveBtn;
+
+    // TODO
+    @FXML
+    private Button nameSaveBtn;
+
+    // TODO
+    @FXML
+    private RadioButton passwordAllSpecChars;
+
+    // TODO
+    @FXML
+    private CheckBox passwordCaseLower;
+
+    // TODO
+    @FXML
+    private CheckBox passwordCaseUpper;
+
+    // TODO
+    @FXML
+    private Text passwordGenMsg;
+
+    // TODO
+    @FXML
+    private Button passwordGenerateBtn;
+
+    // TODO
+    @FXML
+    private TextField passwordLength;
+
+    // TODO
+    @FXML
+    private RadioButton passwordLtdSpecialChars;
+
+    // TODO
+    @FXML
+    private CheckBox passwordNumbers;
+
+    // TODO
+    @FXML
+    private Button passwordRemoveBtn;
+
+    // TODO
+    @FXML
+    private Button passwordSaveBtn;
+   
+    // TODO
+    @FXML
+    private CheckBox passwordSpaces;
+
+    // TODO
+    @FXML
+    private Button passwordUpdateBtn;
+
+    // TODO
+    @FXML
+    private TextField passwordUsername;
+	
+    // TODO
+    @FXML
+    private TextField passwordWebsite;
+
+    // TODO
+    @FXML
+    private AnchorPane removeBirthdayPane;
+
+    // TODO
+    @FXML
+    private AnchorPane removeEmailPane;
+
+    // TODO
+    @FXML
+    private AnchorPane removeNamePane;
+
+    // TODO
+    @FXML
+    private AnchorPane removePasswordPane;
+
+    // TODO
+    @FXML
+    private ListView<Birthday> savedBirthdays;
+
+    // TODO
+    @FXML
+    private ListView<Email> savedEmails;
+
+    // TODO
+    @FXML
+    private ListView<Name> savedNames;
+
+    // TODO
+    @FXML
+    private ListView<Name> savedNamesForEmail;
+
+    // TODO
+    @FXML
+    private ListView<Password> savedPasswords;
+
+    // TODO
+    @FXML
+    private ToggleGroup specialChars;
+
+    // TODO
+    @FXML
+    private AnchorPane updatePasswordPane;
 	
 	
 	/**
@@ -49,8 +300,12 @@ public class MultitoolController {
 	 * TODO
 	 */
 	public MultitoolController() {
-		
 		generate = new GenerationController();
+		
+		password = new Password();
+		name = new Name();
+		email = new Email();
+		birthday = new Birthday();
 		
 		// Load saved data
 		loadPasswordData();
@@ -62,6 +317,138 @@ public class MultitoolController {
 		loadFirstNameDatabase();
 		loadLastNameDatabase();
 	}
+	
+	
+	/**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+	 @FXML
+    void generateBirthday(ActionEvent event) {
+
+    }
+
+	 
+	 /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void generateEmail(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void generateName(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void generatePassword(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void removeBirthday(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void removeEmail(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void removeName(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void removePassword(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void saveBirthday(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void saveName(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void savePassword(ActionEvent event) {
+
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    void updatePassword(ActionEvent event) {
+
+    }
 	
 	
 	/**
