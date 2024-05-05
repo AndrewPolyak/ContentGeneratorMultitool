@@ -93,4 +93,24 @@ public class Password extends GeneratedData {
 		return SPACE;
 	}
 	
+	
+	public String formatPassword(String password) {
+		return "Password: " + password;
+	}
+	
+	
+	public String formatPasswordAndWeb(String password, String website) {
+		return "Website: " + website + "; Password: " + password;
+	}
+
+
+	public String formatAccountDetails(String password, String website, String username) {
+		return "Website: " + website + "; Username: " + username + "; Password: " + password;
+	}
+	
+	
+	public String formatPasswordAndUsername(String password, String username) {
+		return "Username: " + username + "; Password: " + password;
+	}
+	
 }

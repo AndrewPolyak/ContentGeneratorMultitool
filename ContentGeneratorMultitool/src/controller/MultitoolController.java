@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,20 +40,11 @@ public class MultitoolController {
 	// TODO
 	private DataController dataController;
 	
-	// TODO
-	private GeneratedData password;
-	
-	// TODO
-	private GeneratedData name;
-	
-	// TODO
-	private GeneratedData email;
-	
-	// TODO
-	private GeneratedData birthday;
-	
 	//TODO
 	private GenerationController generate;
+	
+	// TODO
+	private Password password;
 	
 	// passwords is an ArrayList of String values which represent all user-saved passwords
 	private ArrayList<String> passwords;
@@ -245,10 +238,6 @@ public class MultitoolController {
 
     // TODO
     @FXML
-    private Button passwordUpdateBtn;
-
-    // TODO
-    @FXML
     private TextField passwordUsername;
 	
     // TODO
@@ -294,10 +283,6 @@ public class MultitoolController {
     // TODO
     @FXML
     private ToggleGroup specialChars;
-
-    // TODO
-    @FXML
-    private AnchorPane updatePasswordPane;
 	
 	
 	/**
@@ -308,13 +293,10 @@ public class MultitoolController {
 		// Instantiate generate, an instance of GenerationController, to manage generating the main content types
 		generate = new GenerationController();
 		
-		// Instantiate the main content types
-		password = new Password();
-		name = new Name();
-		email = new Email();
-		birthday = new Birthday();
+		//TODO
+		dataController = new DataController();
 		
-		// Load saved data
+		// Load data
 		loadData();
 	}
 	
@@ -323,6 +305,9 @@ public class MultitoolController {
 	 * TODO
 	 */
 	private void loadData() {
+		// TODO
+		password = new Password();
+		
 		// Load saved data
 		passwords = dataController.loadPasswordData();
 		names = dataController.loadNameData();
@@ -341,7 +326,7 @@ public class MultitoolController {
 	 * @param event
 	 */
 	 @FXML
-    void generateBirthday(ActionEvent event) {
+	 private void generateBirthday(ActionEvent event) {
 
     }
 
@@ -352,7 +337,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void generateEmail(ActionEvent event) {
+    private void generateEmail(ActionEvent event) {
 
     }
 
@@ -363,7 +348,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void generateName(ActionEvent event) {
+    private void generateName(ActionEvent event) {
 
     }
 
@@ -374,82 +359,87 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    private void generatePassword(ActionEvent event) {
+    private void generatePasswordHandler(ActionEvent event) {
     	passwordGenerateBtn.setOnMouseClicked(e -> {
-    		
-    		String generatedPassword; // generatedPassword is a String value representing the final generated password
-    		
-    		// Initialize password parameter check-selections to false
-    		boolean uppercase = false;
-        	boolean lowercase = false;
-        	boolean allSpecChar = false;
-        	boolean ltdSpecChar = false;
-        	boolean numbers = false;
-        	boolean spaces = false;
-        	
-        	// Initialize and validate length
-        	String length = passwordLength.getText();
-        	boolean validLengthInput = validDigit(length);;
-    		
-        	// If the length input is valid, then process the parameters
-    		if (validLengthInput) { 
-    			// Collect letter case parameters
-        		if (passwordCaseUpper.isSelected()) {
-        			uppercase = true;
-        		}
-        		if (passwordCaseLower.isSelected()) {
-        			lowercase = true;
-        		}
-        		
-        		// Collect special character parameters
-        		if (passwordAllSpecChars.isSelected()) {
-        			allSpecChar = true;
-        		} else if (passwordLtdSpecialChars.isSelected()) {
-        			ltdSpecChar = true;
-        		}
-        		
-        		// Collect number parameters
-        		if (passwordNumbers.isSelected()) {
-        			numbers = true;
-        		}
-        		
-        		// Collect space parameters
-        		if (passwordSpaces.isSelected()) {
-        			spaces = true;
-        		}
-    			
-        		// Generate the password
-    			generatedPassword = generate.generatePassword(uppercase, lowercase, allSpecChar, ltdSpecChar, numbers, spaces, Integer.parseInt(length));
-        		
-    			// Inform the user that the password was generated
-    			passwordGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-        		passwordGenMsg.setText("Secure password generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
-        		
-        		// Add the generated password's value to the relevant text box
-        		generatedPasswordContainer.setText(generatedPassword);
-        		
-        		// Display the password to the user
-        		displayPasswordPane.setVisible(true);
-    		} else {
-    			// The length is invalid; inform the user that it must be addressed
-    			passwordGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-    			passwordGenMsg.setText("Invalid length input"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
-    			
-    			// Hide the generated password pane from then user (there is nothing to display)
-    			displayPasswordPane.setVisible(false);
-    		}	
+    		generatePassword();
     	});
     }
 
     
     /**
      * TODO
+     */
+    private void generatePassword() {
+    	String generatedPassword; // generatedPassword is a String value representing the final generated password
+		
+		// Initialize password parameter check-selections to false
+		boolean uppercase = false;
+    	boolean lowercase = false;
+    	boolean allSpecChar = false;
+    	boolean ltdSpecChar = false;
+    	boolean numbers = false;
+    	boolean spaces = false;
+    	
+    	// Initialize and validate length
+    	String length = passwordLength.getText();
+    	boolean validLengthInput = validDigit(length);;
+		
+    	// If the length input is valid, then process the parameters
+		if (validLengthInput) { 
+			// Collect letter case parameters
+    		if (passwordCaseUpper.isSelected()) {
+    			uppercase = true;
+    		}
+    		if (passwordCaseLower.isSelected()) {
+    			lowercase = true;
+    		}
+    		
+    		// Collect special character parameters
+    		if (passwordAllSpecChars.isSelected()) {
+    			allSpecChar = true;
+    		} else if (passwordLtdSpecialChars.isSelected()) {
+    			ltdSpecChar = true;
+    		}
+    		
+    		// Collect number parameters
+    		if (passwordNumbers.isSelected()) {
+    			numbers = true;
+    		}
+    		
+    		// Collect space parameters
+    		if (passwordSpaces.isSelected()) {
+    			spaces = true;
+    		}
+			
+    		// Generate the password
+			generatedPassword = generate.generatePassword(uppercase, lowercase, allSpecChar, ltdSpecChar, numbers, spaces, Integer.parseInt(length));
+    		
+			// Inform the user that the password was generated
+			passwordGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+    		passwordGenMsg.setText("Secure password generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		
+    		// Add the generated password's value to the relevant text box
+    		generatedPasswordContainer.setText(generatedPassword);
+    		
+    		// Display the password to the user
+    		displayPasswordPane.setVisible(true);
+		} else {
+			// The length is invalid; inform the user that it must be addressed
+			passwordGenMsg.setFill(Color.rgb(228, 73, 73, 1));
+			passwordGenMsg.setText("Invalid length input"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+			
+			// Hide the generated password pane from then user (there is nothing to display)
+			displayPasswordPane.setVisible(false);
+		}	
+    }
+    
+    /**
+     * If the input is a digit, return true; otherwise return false
      * 
-     * @param length
-     * @return
+     * @param input a String value representing the input to validate
+     * @return true (valid) or false (invalid)
      */
     private boolean validDigit(String input) {
-    	// If the input is a digit, return true; otherwise return false
     	if (!input.matches("\\d+")) {
     		return false;
     	} else {
@@ -465,7 +455,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void removeBirthday(ActionEvent event) {
+    private void removeBirthday(ActionEvent event) {
 
     }
 
@@ -476,7 +466,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void removeEmail(ActionEvent event) {
+    private void removeEmail(ActionEvent event) {
 
     }
 
@@ -487,7 +477,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void removeName(ActionEvent event) {
+    private void removeName(ActionEvent event) {
 
     }
 
@@ -498,7 +488,39 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void removePassword(ActionEvent event) {
+    private void removePasswordHandler(ActionEvent event) {
+    	passwordRemoveBtn.setOnMouseClicked(e -> {
+    		removePassword();
+    	});
+    }
+    
+    
+    /**
+     * TODO
+     */
+    private void removePassword() {
+    	// Get the index of the selected password-to-remove and remove said password from passwords
+    	int selectedPasswordIndex = savedPasswords.getSelectionModel().getSelectedIndex();
+		if (selectedPasswordIndex >= 0) {
+			passwords.remove(selectedPasswordIndex);
+		}
+		
+		// Empty ListView; we will re-add contents soon
+    	savedPasswords.getItems().clear();
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedPasswords
+        ObservableList<String> observableList = FXCollections.observableArrayList(passwords);
+        savedPasswords.getItems().addAll(observableList);
+    }
+
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void saveBirthday(ActionEvent event) {
 
     }
 
@@ -509,7 +531,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void saveBirthday(ActionEvent event) {
+    private void saveName(ActionEvent event) {
 
     }
 
@@ -520,30 +542,38 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    void saveName(ActionEvent event) {
-
+    private void savePasswordHandler(ActionEvent event) {
+    	passwordSaveBtn.setOnMouseClicked(e -> {
+    		savePassword();
+    	});
     }
-
+    
     
     /**
-	 * TODO
-	 * 
-	 * @param event
-	 */
-    @FXML
-    void savePassword(ActionEvent event) {
-
-    }
-
-    
-    /**
-	 * TODO
-	 * 
-	 * @param event
-	 */
-    @FXML
-    void updatePassword(ActionEvent event) {
-
+     * TODO
+     */
+    private void savePassword() {
+    	// Empty ListView; we will re-add contents soon
+		savedPasswords.getItems().clear();
+		
+		// Collect the user-inputted account data + generated password
+		String password = generatedPasswordContainer.getText();
+		String website = passwordWebsite.getText();
+		String username = passwordUsername.getText();
+		
+		if (website.equals("") && username.equals("")) { // If only the password field contains a value, add only the password's value to the ArrayList
+			passwords.add(this.password.formatPassword(password));
+		} else if (website.equals("")) { // Only the password and username fields are filled; add those two to the ArrayList
+			passwords.add(this.password.formatPasswordAndUsername(password, username));
+		} else if (username.equals("")) { // Only the password and website fields are filled; add those two to the ArrayList
+			passwords.add(this.password.formatPasswordAndWeb(password, website));
+		} else { // All fields are filled; add all three to the ArrayList
+			passwords.add(this.password.formatAccountDetails(password, website, username));
+		}
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedPasswords
+        ObservableList<String> observableList = FXCollections.observableArrayList(passwords);
+        savedPasswords.getItems().addAll(observableList);
     }
 	
 }
