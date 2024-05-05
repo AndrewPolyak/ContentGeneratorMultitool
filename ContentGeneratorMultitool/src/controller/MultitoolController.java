@@ -1,12 +1,6 @@
 package controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,7 +26,7 @@ import model.Password;
 /**
  * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling logic, data loading/saving, etc.
  * 
- * @version 05/04/2024
+ * @version 05/05/2024
  * @author Andrew Polyak
  */
 public class MultitoolController {
@@ -490,7 +484,7 @@ public class MultitoolController {
     @FXML
     private void removePasswordHandler(ActionEvent event) {
     	passwordRemoveBtn.setOnMouseClicked(e -> {
-    		removePassword();
+    		removeContent(savedPasswords, passwords);
     	});
     }
     
@@ -498,19 +492,19 @@ public class MultitoolController {
     /**
      * TODO
      */
-    private void removePassword() {
-    	// Get the index of the selected password-to-remove and remove said password from passwords
-    	int selectedPasswordIndex = savedPasswords.getSelectionModel().getSelectedIndex();
-		if (selectedPasswordIndex >= 0) {
-			passwords.remove(selectedPasswordIndex);
+    private void removeContent(ListView<String> savedContents, ArrayList<String> contents) {
+    	// Get the index of the selected content-to-remove and remove said content from contents
+    	int selectedContentIndex = savedContents.getSelectionModel().getSelectedIndex();
+		if (selectedContentIndex >= 0) {
+			contents.remove(selectedContentIndex);
 		}
 		
 		// Empty ListView; we will re-add contents soon
-    	savedPasswords.getItems().clear();
+		savedContents.getItems().clear();
 		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedPasswords
-        ObservableList<String> observableList = FXCollections.observableArrayList(passwords);
-        savedPasswords.getItems().addAll(observableList);
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
+        ObservableList<String> observableList = FXCollections.observableArrayList(contents);
+        savedContents.getItems().addAll(observableList);
     }
 
     
