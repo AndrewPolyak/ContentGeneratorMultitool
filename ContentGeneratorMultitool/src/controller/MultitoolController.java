@@ -332,42 +332,78 @@ public class MultitoolController {
 	 * @param event
 	 */
 	 @FXML
-	 private void generateBirthday(ActionEvent event) {
-
+	 private void generateBirthdayHandler(ActionEvent event) {
+		 birthdayGenerateBtn.setOnMouseClicked(e -> {
+			 generateBirthday();
+		 });
     }
 
 	 
 	 /**
+	  * TODO
+	  */
+	 private void generateBirthday() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	/**
 	 * TODO
 	 * 
 	 * @param event
 	 */
     @FXML
-    private void generateEmail(ActionEvent event) {
-
-    }
-
-    
-    /**
-	 * TODO
-	 * 
-	 * @param event
-	 */
-    @FXML
-    private void generateName(ActionEvent event) {
-    	nameGenerateBtn.setOnMouseClicked(e -> {
-    		String name = generate.generateName(firstNames, lastNames);
-    		
-    		// Inform the user that the name was generated
-    		nameGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-    		nameGenMsg.setText("Name generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
-    		
-    		generatedNameContainer.setText(name);
+    private void generateEmailHandler(ActionEvent event) {
+    	emailGenerateBtn.setOnMouseClicked(e -> {
+    		generateEmail();
     	});
     }
 
     
     /**
+     * TODO
+     */
+    private void generateEmail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	/**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void generateNameHandler(ActionEvent event) {
+    	nameGenerateBtn.setOnMouseClicked(e -> {
+    		generateName();
+    	});
+    }
+
+    
+    /**
+     * TODO
+     */
+    private void generateName() {
+    	// Generate the name
+		String name = generate.generateName(firstNames, lastNames);
+		
+		// Inform the user that the name was generated
+		nameGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+		nameGenMsg.setText("Name generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+		
+		// Display the name to the user
+		displayNamePane.setVisible(true);
+		
+		// Add the generated name's value to the relevant text box
+		generatedNameContainer.setText(name);
+		
+	}
+
+
+	/**
 	 * TODO
 	 * 
 	 * @param event
@@ -469,8 +505,10 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    private void removeBirthday(ActionEvent event) {
-
+    private void removeBirthdayHandler(ActionEvent event) {
+    	birthdayRemoveBtn.setOnMouseClicked(e -> {
+    		removeContent(savedBirthdays, birthdays);
+    	});
     }
 
     
@@ -480,8 +518,10 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    private void removeEmail(ActionEvent event) {
-
+    private void removeEmailHandler(ActionEvent event) {
+    	emailRemoveBtn.setOnMouseClicked(e -> {
+    		removeContent(savedEmails, emails);
+    	});
     }
 
     
@@ -491,7 +531,7 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    private void removeName(ActionEvent event) {
+    private void removeNameHandler(ActionEvent event) {
     	nameRemoveBtn.setOnMouseClicked(e -> {
     		removeContent(savedNames, names);
     	});
@@ -536,37 +576,97 @@ public class MultitoolController {
 	 * @param event
 	 */
     @FXML
-    private void saveBirthday(ActionEvent event) {
-
+    private void saveBirthdayHandler(ActionEvent event) {
+    	birthdaySaveBtn.setOnMouseClicked(e -> {
+    		saveBirthday();
+    	});
     }
 
     
+    /**
+     * TODO
+     */
+    private void saveBirthday() {
+    	// Empty ListView; we will re-add contents soon
+		savedEmails.getItems().clear();
+		
+		// Collect the generated birthday
+		String birthday = generatedBirthdayContainer.getText();
+		
+		// Add the generated birthday to the ArrayList
+		birthdays.add(this.birthday.formatBirthday(birthday));
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedBirthdays
+        ObservableList<String> observableList = FXCollections.observableArrayList(birthdays);
+        savedBirthdays.getItems().addAll(observableList);
+	}
+
+
     /**
 	 * TODO
 	 * 
 	 * @param event
 	 */
     @FXML
-    private void saveName(ActionEvent event) {
+    private void saveEmailHandler(ActionEvent event) {
+    	emailSaveBtn.setOnMouseClicked(e -> {
+    		saveEmail();
+    	});
+    }
+    
+    
+    /**
+     * TODO
+     */
+	private void saveEmail() {
+		// Empty ListView; we will re-add contents soon
+		savedEmails.getItems().clear();
+		
+		// Collect the generated email
+		String email = generatedEmailContainer.getText();
+		
+		// Add the generated email to the ArrayList
+		emails.add(this.email.formatEmail(email));
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedEmails
+        ObservableList<String> observableList = FXCollections.observableArrayList(emails);
+        savedEmails.getItems().addAll(observableList);
+	}
+
+
+	/**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void saveNameHandler(ActionEvent event) {
     	nameSaveBtn.setOnMouseClicked(e -> {
-    		// Empty ListView; we will re-add contents soon
-    		savedNames.getItems().clear();
-    		
-    		// Collect the generated name
-    		String name = generatedNameContainer.getText();
-    		
-    		// Add the generated name to the ArrayList
-    		names.add(this.name.formatName(name));
-    		
-    		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedNames
-            ObservableList<String> observableList = FXCollections.observableArrayList(names);
-            savedNames.getItems().addAll(observableList);
-    		
+    		saveName();
     	});
     }
 
     
     /**
+     * TODO
+     */
+    private void saveName() {
+    	// Empty ListView; we will re-add contents soon
+		savedNames.getItems().clear();
+		
+		// Collect the generated name
+		String name = generatedNameContainer.getText();
+		
+		// Add the generated name to the ArrayList
+		names.add(this.name.formatName(name));
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedNames
+        ObservableList<String> observableList = FXCollections.observableArrayList(names);
+        savedNames.getItems().addAll(observableList);
+	}
+
+
+	/**
 	 * TODO
 	 * 
 	 * @param event
