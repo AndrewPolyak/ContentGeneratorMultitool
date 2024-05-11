@@ -40,6 +40,15 @@ public class MultitoolController {
 	// TODO
 	private Password password;
 	
+	//TODO
+	private Name name;
+	
+	// TODO
+	private Email email;
+	
+	// TODO
+	private Birthday birthday;
+	
 	// passwords is an ArrayList of String values which represent all user-saved passwords
 	private ArrayList<String> passwords;
 	
@@ -301,6 +310,9 @@ public class MultitoolController {
 	private void loadData() {
 		// TODO
 		password = new Password();
+		name = new Name();
+		email = new Email();
+		birthday = new Birthday();
 		
 		// Load saved data
 		passwords = dataController.loadPasswordData();
@@ -343,7 +355,15 @@ public class MultitoolController {
 	 */
     @FXML
     private void generateName(ActionEvent event) {
-
+    	nameGenerateBtn.setOnMouseClicked(e -> {
+    		String name = generate.generateName(firstNames, lastNames);
+    		
+    		// Inform the user that the name was generated
+    		nameGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+    		nameGenMsg.setText("Name generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		
+    		generatedNameContainer.setText(name);
+    	});
     }
 
     
@@ -472,7 +492,9 @@ public class MultitoolController {
 	 */
     @FXML
     private void removeName(ActionEvent event) {
-
+    	nameRemoveBtn.setOnMouseClicked(e -> {
+    		removeContent(savedNames, names);
+    	});
     }
 
     
@@ -499,7 +521,7 @@ public class MultitoolController {
 			contents.remove(selectedContentIndex);
 		}
 		
-		// Empty ListView; we will re-add contents soon
+		// Empty ListView; we will re-add items soon
 		savedContents.getItems().clear();
 		
 		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
@@ -526,7 +548,21 @@ public class MultitoolController {
 	 */
     @FXML
     private void saveName(ActionEvent event) {
-
+    	nameSaveBtn.setOnMouseClicked(e -> {
+    		// Empty ListView; we will re-add contents soon
+    		savedNames.getItems().clear();
+    		
+    		// Collect the generated name
+    		String name = generatedNameContainer.getText();
+    		
+    		// Add the generated name to the ArrayList
+    		names.add(this.name.formatName(name));
+    		
+    		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedNames
+            ObservableList<String> observableList = FXCollections.observableArrayList(names);
+            savedNames.getItems().addAll(observableList);
+    		
+    	});
     }
 
     

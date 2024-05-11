@@ -111,15 +111,40 @@ public class GenerationController {
 		// TODO
 		String fullName;
 		
+		// Get a random first and last name
 		firstName = firstNames.get(randomizer.nextInt(firstNames.size() - 1));
 		lastName = lastNames.get(randomizer.nextInt(lastNames.size() - 1));
 		
+		// Assign title case to each name
+		firstName = toTitleCase(firstName);
+		lastName = toTitleCase(lastName);
+		
+		// Format the names to become a full name
 		fullName = firstName + " " + lastName;
 		
 		return fullName;
 	}
 	
 	
+	/**
+	 * TODO
+	 * 
+	 * @param name
+	 * @return
+	 */
+	private String toTitleCase(String name) {
+		
+		// Get the first letter of the name (firstCharLower), then capitalize it (firstCharUpper)
+		char firstCharLower = name.charAt(0);
+		char firstCharUpper = Character.toUpperCase(firstCharLower);
+		
+		// TODO
+		name = name.replaceFirst(String.valueOf(firstCharLower), String.valueOf(firstCharUpper));
+		
+		return name;
+	}
+
+
 	/**
 	 * TODO
 	 * 

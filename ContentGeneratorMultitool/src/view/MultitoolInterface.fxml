@@ -227,7 +227,7 @@
                                  <children>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="500.0">
                                        <children>
-                                          <Button fx:id="nameGenerateBtn" layoutX="228.0" layoutY="189.0" mnemonicParsing="false" onAction="#generateName" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Name" textFill="WHITE">
+                                          <Button fx:id="nameGenerateBtn" layoutX="228.0" layoutY="244.0" mnemonicParsing="false" onAction="#generateName" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Name" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
@@ -251,9 +251,9 @@
                                                 <Font name="Tw Cen MT" size="17.0" />
                                              </font>
                                           </Text>
-                                          <Text fx:id="nameGenMsg" fill="#2a363b" layoutX="90.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="454.41259765625">
+                                          <Text fx:id="nameGenMsg" fill="#2a363b" layoutX="86.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="454.41259765625">
                                              <font>
-                                                <Font name="Tahoma" size="17.0" />
+                                                <Font name="Tahoma Bold" size="14.0" />
                                              </font>
                                           </Text>
                                        </children>
