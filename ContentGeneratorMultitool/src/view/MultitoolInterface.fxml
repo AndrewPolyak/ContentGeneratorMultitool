@@ -300,12 +300,12 @@
                                  <children>
                                     <AnchorPane layoutX="333.0" layoutY="125.0" prefHeight="485.0" prefWidth="334.0">
                                        <children>
-                                          <Button fx:id="emailGenerateBtn" layoutX="82.0" layoutY="105.0" mnemonicParsing="false" onAction="#generateEmailHandler" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Email" textFill="WHITE">
+                                          <Button fx:id="emailGenerateBtn" layoutX="82.0" layoutY="152.0" mnemonicParsing="false" onAction="#generateEmailHandler" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: #63ADF2;" text="Generate Email" textFill="WHITE">
                                              <font>
                                                 <Font name="Tahoma" size="14.0" />
                                              </font>
                                           </Button>
-                                          <AnchorPane fx:id="displayEmailPane" layoutX="37.0" layoutY="188.0" prefHeight="110.0" prefWidth="260.0">
+                                          <AnchorPane fx:id="displayEmailPane" layoutX="37.0" layoutY="188.0" prefHeight="110.0" prefWidth="260.0" visible="false">
                                              <children>
                                                 <Button fx:id="emailSaveBtn" layoutX="30.0" layoutY="60.0" mnemonicParsing="false" onAction="#saveEmailHandler" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #63ADF2;" text="Save Email" textFill="WHITE">
                                                    <font>
@@ -319,9 +319,9 @@
                                                 </TextField>
                                              </children>
                                           </AnchorPane>
-                                          <Text fx:id="emailGenMsg" fill="#2a363b" layoutX="-23.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DYNAMIC MSG PLACEHOLDER" textAlignment="CENTER" wrappingWidth="380.41259765625">
+                                          <Text fx:id="emailGenMsg" fill="#2a363b" layoutX="-23.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="380.41259765625">
                                              <font>
-                                                <Font name="Tahoma" size="17.0" />
+                                                <Font name="Tahoma Bold" size="14.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -402,7 +402,7 @@
                                                 <Font name="Tahoma" size="12.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox fx:id="emailAddressITuta" layoutX="90.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Tuta">
+                                          <CheckBox fx:id="emailAddressTuta" layoutX="90.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Tuta">
                                              <font>
                                                 <Font name="Tahoma" size="12.0" />
                                              </font>

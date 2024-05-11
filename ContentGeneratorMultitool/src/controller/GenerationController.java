@@ -166,7 +166,7 @@ public class GenerationController {
 		String lastName = fullNameSplit[1].toLowerCase();
 		
 		//TODO
-		String domainName = domainNames.get(randomizer.nextInt(domainNames.size() - 1)).toLowerCase();
+		String domainName = domainNames.get(randomizer.nextInt(domainNames.size())).toLowerCase();
 		
 		// TODO
 		boolean includeNumber = randomizer.nextBoolean();

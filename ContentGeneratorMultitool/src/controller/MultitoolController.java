@@ -125,7 +125,7 @@ public class MultitoolController {
 
     // TODO
     @FXML
-    private CheckBox emailAddressITuta;
+    private CheckBox emailAddressTuta;
 
     // TODO
     @FXML
@@ -365,8 +365,92 @@ public class MultitoolController {
      * TODO
      */
     private void generateEmail() {
-		// TODO Auto-generated method stub
 		
+    	// TODO
+    	String email;
+    	
+    	// TODO
+    	String domain;
+    	
+    	// TODO
+    	String name = "";
+    	
+    	// TODO
+    	ArrayList<String> domains = new ArrayList<>();
+    	
+    	// Collect all of the domains that the user wants to include
+    	if (emailAddressGmail.isSelected()) {
+    		domain = emailAddressGmail.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressOutlook.isSelected()) {
+    		domain = emailAddressOutlook.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressYahoo.isSelected()) {
+    		domain = emailAddressYahoo.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressProton.isSelected()) {
+    		domain = emailAddressProton.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressICloud.isSelected()) {
+    		domain = emailAddressICloud.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressTuta.isSelected()) {
+    		domain = emailAddressTuta.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressYandex.isSelected()) {
+    		domain = emailAddressYandex.getText();
+    		domains.add(domain);
+    	}
+    	if (emailAddressZoho.isSelected()) {
+    		domain = emailAddressZoho.getText();
+    		domains.add(domain);
+    	}
+    	if (!customEmailProvider.getText().isBlank()) { // If the custom domain option is filled in, then use that option too
+    		domain = customEmailProvider.getText();
+    		domains.add(domain);
+    	}
+    	
+    	// Check if the user has selected a saved name to include for the email; if so, set name's value to it
+    	for (int i = 0; i < emails.size(); i++) {
+    		if (savedNamesForEmail.getSelectionModel().isSelected(i)) {
+    			name = savedNamesForEmail.getSelectionModel().getSelectedItem();
+    			
+    			name.replaceAll("Name: ", ""); // Remove the formatting
+    		}
+    	}
+		
+    	// If the user did not select a saved name, generate a random one
+    	if (name.isBlank()) {
+    		name = generate.generateName(firstNames, lastNames);
+    	}
+    	
+    	// If at least one domain is selected, generate the email
+    	if (!domains.isEmpty()) {
+    		email = generate.generateEmail(domains, name);
+    		
+    		// Inform the user that the email was generated
+        	emailGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+        	emailGenMsg.setText("Email generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		
+    		// Display the email to the user
+        	displayEmailPane.setVisible(true);
+    		
+    		// Add the generated email's value to the relevant text box
+        	generatedEmailContainer.setText(email);
+    	} else { 
+    		// No domains are selected; inform the user that it must be addressed
+    		emailGenMsg.setFill(Color.rgb(228, 73, 73, 1));
+    		emailGenMsg.setText("Please select at least one domain option"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+			
+			// Hide the generated password pane from then user (there is nothing to display)
+    		displayEmailPane.setVisible(false);
+    	}
 	}
 
 
