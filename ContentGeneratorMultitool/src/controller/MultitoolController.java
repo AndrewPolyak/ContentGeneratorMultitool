@@ -13,6 +13,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -343,10 +344,68 @@ public class MultitoolController {
 	  * TODO
 	  */
 	 private void generateBirthday() {
-		// TODO Auto-generated method stub
 		
+		String birthday;
+		 
+		// Get the upper and lower age range values
+		int lowerAge = (int) ageLowerRange.getValue();
+		int upperAge = (int) ageUpperRange.getValue();
+		 
+		if (lowerAge <= upperAge) {
+			birthday = generate.generateBirthday(lowerAge, upperAge);
+			 
+			// Inform the user that the birthday was generated
+			birthdayGenMsg.setFill(Color.rgb(99, 173, 242, 1));
+			birthdayGenMsg.setText("Birthday generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		
+    		// Display the birthday to the user
+        	displayBirthdayPane.setVisible(true);
+    		
+    		// Add the generated birthday's value to the relevant text box
+        	generatedBirthdayContainer.setText(birthday);
+	        	
+		 } else {
+			// The lower age range is higher than the upper range; inform the user that it must be addressed
+			 birthdayGenMsg.setFill(Color.rgb(228, 73, 73, 1));
+			 birthdayGenMsg.setText("The lower range cannot be higher than the upper range"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+		 }
+		 
+		 
+		 
 	}
 
+	 
+	 /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void lowerRangeMsgHandler(MouseEvent event) {
+    	updateBirthdayRangeMsg();
+    }
+    
+    
+    /**
+	 * TODO
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void upperRangeMsgHandler(MouseEvent event) {
+    	updateBirthdayRangeMsg();
+    }
+    
+    
+    /**
+     * TODO
+     */
+    private void updateBirthdayRangeMsg() {
+        int lowerValue = (int) ageLowerRange.getValue();
+        int upperValue = (int) ageUpperRange.getValue();
+        birthdayRangeMsg.setText("Between " + lowerValue + " and " + upperValue + " years of age"); // FIXME MVC
+    }
+	 
 
 	/**
 	 * TODO
@@ -359,7 +418,7 @@ public class MultitoolController {
     		generateEmail();
     	});
     }
-
+    
     
     /**
      * TODO

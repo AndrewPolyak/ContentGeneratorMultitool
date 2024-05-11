@@ -1,6 +1,7 @@
 package controller;
 
 import java.security.SecureRandom;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -210,6 +211,8 @@ public class GenerationController {
 	
 	public String generateBirthday(int lowerAge, int upperAge) {
 		
+		calendar.clear();
+		
 		// TODO
 		String birthday;
 		
@@ -218,18 +221,21 @@ public class GenerationController {
 		String year; // TODO
 		
 		// TODO
-		int randomYear = randomizer.nextInt(upperAge - lowerAge) + lowerAge;
-		
-		// TODO
 		int randomDate = randomizer.nextInt(31);
 		
 		// TODO
 		int randomMonth = randomizer.nextInt(12);
 		
 		// TODO
-		calendar.add(Calendar.YEAR, -randomYear);
-		calendar.add(Calendar.MONTH, randomMonth);
-		calendar.add(Calendar.DATE, randomDate);
+		String currentYear = Year.now().toString();
+		
+		System.out.println(currentYear);
+		
+		// TODO
+		int randomYear = Integer.parseInt(currentYear) - ((lowerAge) + randomizer.nextInt(upperAge - lowerAge)); // FIXME this line of logic doesn't work with the extremes
+		
+		// TODO
+		calendar.set(randomYear, randomMonth, randomDate);
 		
 		// TODO
 		String[] splittedDate = calendar.getTime().toString().split(" ");
