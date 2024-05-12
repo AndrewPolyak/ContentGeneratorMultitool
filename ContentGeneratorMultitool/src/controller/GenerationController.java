@@ -214,13 +214,6 @@ public class GenerationController {
 		calendar.clear();
 		
 		// TODO
-		String birthday;
-		
-		String month; // TODO
-		String date; // TODO
-		String year; // TODO
-		
-		// TODO
 		int randomDate = randomizer.nextInt(31);
 		
 		// TODO
@@ -229,22 +222,29 @@ public class GenerationController {
 		// TODO
 		String currentYear = Year.now().toString();
 		
-		System.out.println(currentYear);
+		// TODO
+		int yearsRange = upperAge - lowerAge;
 		
 		// TODO
-		int randomYear = Integer.parseInt(currentYear) - ((lowerAge) + randomizer.nextInt(upperAge - lowerAge)); // FIXME this line of logic doesn't work with the extremes
+		if (yearsRange == 0) {
+			yearsRange = 1;
+		}
 		
 		// TODO
-		calendar.set(randomYear, randomMonth, randomDate);
+		int randomYear = lowerAge + randomizer.nextInt(yearsRange);
+		int year = (Integer.parseInt(currentYear) - randomYear);
+		
+		// TODO
+		calendar.set(year, randomMonth, randomDate);
 		
 		// TODO
 		String[] splittedDate = calendar.getTime().toString().split(" ");
-		month = splittedDate[1];
-		date = splittedDate[2];
-		year = splittedDate[5];
+		String monthFinal = splittedDate[1];
+		String dateFinal = splittedDate[2];
+		String yearFinal = splittedDate[5];
 		
 		// Format the data
-		birthday = month + "/" + date + "/" + year;
+		String birthday = monthFinal + "/" + dateFinal + "/" + yearFinal;
 		
 		return birthday;
 	}

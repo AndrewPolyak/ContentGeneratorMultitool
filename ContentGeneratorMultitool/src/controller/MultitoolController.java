@@ -731,7 +731,7 @@ public class MultitoolController {
      */
     private void saveBirthday() {
     	// Empty ListView; we will re-add contents soon
-		savedEmails.getItems().clear();
+		savedBirthdays.getItems().clear();
 		
 		// Collect the generated birthday
 		String birthday = generatedBirthdayContainer.getText();
