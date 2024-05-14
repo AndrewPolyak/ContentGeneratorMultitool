@@ -68,51 +68,51 @@ public class MultitoolController {
 	// lastNames is an ArrayList of String values which represents all possible last names which can be randomly generated
 	private ArrayList<String> lastNames;
 	
-	// TODO
+	// ageLowerRange is a Slider object representing the value of the user-selected lower-age range slider for the birthday generator
     @FXML
     private Slider ageLowerRange;
 
-    // TODO
+    // ageUpperRange is a Slider object representing the value of the user-selected upper-age range slider for the birthday generator
     @FXML
     private Slider ageUpperRange;
 
-    // TODO
+    // birthdayGenMsg is a Text object representing the dynamic message displayed to the user once they click the generate birthday button
     @FXML
     private Text birthdayGenMsg;
 
-    // TODO
+    // birthdayGenerateBtn is a Button object representing the button the user can press to generate a birthday
     @FXML
     private Button birthdayGenerateBtn;
     
-    // TODO
+    // birtdayRangeMsg is a Text object representing the dynamic message displayed to the user to indicate the values of the lower and upper sliders
     @FXML
     private Text birthdayRangeMsg;
 
-    // TODO
+    // birthdayRemoveBtn is a Button object representing the button the user can press to remove their selected saved birthday
     @FXML
     private Button birthdayRemoveBtn;
 
-    // TODO
+    // birthdayRemoveBtn is a Button object representing the button the user can press to save their generated birthday
     @FXML
     private Button birthdaySaveBtn;
 
-    // TODO
+    // customEmailProvider is a TextField object representing the text field containing the user-customized email domain
     @FXML
     private TextField customEmailProvider;
 
-    // TODO
+    // displayBirthdayPane is an AnchorPane object containing the components which will display the generated birthday and save birthday button
     @FXML
     private AnchorPane displayBirthdayPane;
 
-    // TODO
+    // displayEmailPane is an AnchorPane object containing the components which will display the generated email and save email button
     @FXML
     private AnchorPane displayEmailPane;
 
-    // TODO
+    // displayNamePane is an AnchorPane object containing the components which will display the generated name and save name button
     @FXML
     private AnchorPane displayNamePane;
 
-    // TODO
+    // displayPasswordPane is an AnchorPane object containing the components which will display the generated password and save password button
     @FXML
     private AnchorPane displayPasswordPane;
 
