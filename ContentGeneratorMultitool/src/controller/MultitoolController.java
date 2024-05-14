@@ -476,16 +476,10 @@ public class MultitoolController {
     	}
     	
     	// Check if the user has selected a saved name to include for the email; if so, set name's value to it
-    	for (int i = 0; i < emails.size(); i++) {
-    		if (savedNamesForEmail.getSelectionModel().isSelected(i)) {
-    			name = savedNamesForEmail.getSelectionModel().getSelectedItem();
-    			
-    			name.replaceAll("Name: ", ""); // Remove the formatting
-    		}
-    	}
-		
-    	// If the user did not select a saved name, generate a random one
-    	if (name.isBlank()) {
+    	try {
+    		name = savedNamesForEmail.getSelectionModel().getSelectedItem().replaceAll("Name: ", ""); // Remove the formatting
+    	} catch(Exception e) { 
+    		// If the user did not select a saved name, generate a random one
     		name = generate.generateName(firstNames, lastNames);
     	}
     	
@@ -710,6 +704,27 @@ public class MultitoolController {
 		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
         ObservableList<String> observableList = FXCollections.observableArrayList(contents);
         savedContents.getItems().addAll(observableList);
+        
+        removeSavedNamesForEmail();
+    }
+    
+    
+    /**
+     * TODO
+     */
+    private void removeSavedNamesForEmail() {
+    	// Get the index of the selected content-to-remove and remove said content from contents
+    	int selectedContentIndex = savedNames.getSelectionModel().getSelectedIndex();
+		if (selectedContentIndex >= 0) {
+			names.remove(selectedContentIndex);
+		}
+		
+		// Empty ListView; we will re-add items soon
+		savedNamesForEmail.getItems().clear();
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
+        ObservableList<String> observableList = FXCollections.observableArrayList(names);
+        savedNamesForEmail.getItems().addAll(observableList);
     }
 
     
@@ -796,6 +811,7 @@ public class MultitoolController {
     private void saveName() {
     	// Empty ListView; we will re-add contents soon
 		savedNames.getItems().clear();
+		savedNamesForEmail.getItems().clear();
 		
 		// Collect the generated name
 		String name = generatedNameContainer.getText();
@@ -806,6 +822,7 @@ public class MultitoolController {
 		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedNames
         ObservableList<String> observableList = FXCollections.observableArrayList(names);
         savedNames.getItems().addAll(observableList);
+        savedNamesForEmail.getItems().addAll(observableList);
 	}
 
 

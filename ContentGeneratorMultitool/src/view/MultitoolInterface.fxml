@@ -347,7 +347,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutY="3.0" prefHeight="670.0" prefWidth="333.0">
                                        <children>
-                                          <ListView fx:id="savedNames" layoutX="52.0" layoutY="90.0" prefHeight="440.0" prefWidth="230.0" />
+                                          <ListView fx:id="savedNamesForEmail" layoutX="52.0" layoutY="90.0" prefHeight="440.0" prefWidth="230.0" />
                                           <Text fill="#00100b" layoutX="6.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Created by Andrew Polyak" textAlignment="CENTER">
                                              <font>
                                                 <Font name="Tw Cen MT" size="17.0" />
