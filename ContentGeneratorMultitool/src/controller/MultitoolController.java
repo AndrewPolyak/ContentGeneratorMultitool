@@ -92,7 +92,7 @@ public class MultitoolController {
     @FXML
     private Button birthdayRemoveBtn;
 
-    // birthdayRemoveBtn is a Button object representing the button the user can press to save their generated birthday
+    // birthdaySaveBtn is a Button object representing the button the user can press to save their generated birthday
     @FXML
     private Button birthdaySaveBtn;
 
@@ -116,67 +116,67 @@ public class MultitoolController {
     @FXML
     private AnchorPane displayPasswordPane;
 
-    // TODO
+    // emailAddressGmail is a CheckBox object representing the check box the user can select to add the Gmail domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressGmail;
 
-    // TODO
+    // emailAddressICloud is a CheckBox object representing the check box the user can select to add the iCloud domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressICloud;
 
-    // TODO
+    // emailAddressTuta is a CheckBox object representing the check box the user can select to add the Tuta domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressTuta;
 
-    // TODO
+    // emailAddressOutlook is a CheckBox object representing the check box the user can select to add the Outlook domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressOutlook;
 
-    // TODO
+    // emailAddressProton is a CheckBox object representing the check box the user can select to add the Proton domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressProton;
 
-    // TODO
+    // emailAddressYahoo is a CheckBox object representing the check box the user can select to add the Yahoo domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressYahoo;
 
-    // TODO
+    // emailAddressYandex is a CheckBox object representing the check box the user can select to add the Yandex domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressYandex;
 
-    // TODO
+    // emailAddressZoho is a CheckBox object representing the check box the user can select to add the Zoho domain to the email generator RNG pool
     @FXML
     private CheckBox emailAddressZoho;
 
-    // TODO
+    // emailGenMsg is a Text object representing the dynamic message displayed to the user once they click the generate email button
     @FXML
     private Text emailGenMsg;
 
-    // TODO
+    // emailGenerateBtn is a Button object representing the button the user can press to generate an email
     @FXML
     private Button emailGenerateBtn;
 
-    // TODO
+    // emailRemoveBtn is a Button object representing the button the user can press to remove their selected saved email
     @FXML
     private Button emailRemoveBtn;
 
-    // TODO
+    // emailSaveBtn is a Button object representing the button the user can press to save their generated email
     @FXML
     private Button emailSaveBtn;
 
-    // TODO
+    // generatedBirthdayContainer is a Textfield object containing the generated birthday for the user to see
     @FXML
     private TextField generatedBirthdayContainer;
 
-    // TODO
+ // generatedEmailContainer is a Textfield object containing the generated email for the user to see
     @FXML
     private TextField generatedEmailContainer;
 
-    // TODO
+ // generatedNameContainer is a Textfield object containing the generated name for the user to see
     @FXML
     private TextField generatedNameContainer;
 
-    // TODO
+ // generatedPasswordContainer is a Textfield object containing the generated password for the user to see
     @FXML
     private TextField generatedPasswordContainer;
 
@@ -294,6 +294,12 @@ public class MultitoolController {
 	 * TODO
 	 */
 	public MultitoolController() {
+		// TODO
+		password = new Password();
+		name = new Name();
+		email = new Email();
+		birthday = new Birthday();
+		
 		// Instantiate generate, an instance of GenerationController, to manage generating the main content types
 		generate = new GenerationController();
 		
@@ -309,12 +315,6 @@ public class MultitoolController {
 	 * TODO
 	 */
 	private void loadData() {
-		// TODO
-		password = new Password();
-		name = new Name();
-		email = new Email();
-		birthday = new Birthday();
-		
 		// Load saved data
 		passwords = dataController.loadPasswordData();
 		names = dataController.loadNameData();
@@ -369,9 +369,6 @@ public class MultitoolController {
 			 birthdayGenMsg.setFill(Color.rgb(228, 73, 73, 1));
 			 birthdayGenMsg.setText("The lower range cannot be higher than the upper range"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
 		 }
-		 
-		 
-		 
 	}
 
 	 
