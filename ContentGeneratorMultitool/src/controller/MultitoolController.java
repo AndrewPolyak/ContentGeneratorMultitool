@@ -19,7 +19,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.Birthday;
 import model.Email;
-import model.GeneratedData;
 import model.Name;
 import model.Password;
 
@@ -240,61 +239,61 @@ public class MultitoolController {
     @FXML
     private CheckBox passwordSpaces;
 
-    // TODO
+    // passwordUsername is a Textfield object where the user can input the username associated with the generated password
     @FXML
     private TextField passwordUsername;
 	
-    // TODO
+    // passwordWebsite is a Textfield object where the user can input the website associated with the generated password
     @FXML
     private TextField passwordWebsite;
 
-    // TODO
+    // removeBirthdayPane is an AnchorPane object containing the components which will allow the user to remove a selected saved birthday
     @FXML
     private AnchorPane removeBirthdayPane;
 
-    // TODO
+    // removeEmailPane is an AnchorPane object containing the components which will allow the user to remove a selected saved email
     @FXML
     private AnchorPane removeEmailPane;
 
-    // TODO
+    // removeNamePane is an AnchorPane object containing the components which will allow the user to remove a selected saved name
     @FXML
     private AnchorPane removeNamePane;
 
-    // TODO
+    // removePasswordPane is an AnchorPane object containing the components which will allow the user to remove a selected saved password
     @FXML
     private AnchorPane removePasswordPane;
 
-    // TODO
+    // savedBirthdays is a ListView object containing all of the user's saved birthdays
     @FXML
     private ListView<String> savedBirthdays;
 
-    // TODO
+    // savedEmails is a ListView object containing all of the user's saved emails
     @FXML
     private ListView<String> savedEmails;
 
-    // TODO
+    // savedNames is a ListView object containing all of the user's saved names
     @FXML
     private ListView<String> savedNames;
 
-    // TODO
+    // savedNamesForEmail is a ListView object containing all of the user's saved names, which the user can then use in email generation
     @FXML
     private ListView<String> savedNamesForEmail;
 
-    // TODO
+    // savedPasswords is a ListView object containing all of the user's saved passwords
     @FXML
     private ListView<String> savedPasswords;
 
-    // TODO
+    // specialChars is a ToggleGroup object which only allows the user to select only one special character option during password customization
     @FXML
     private ToggleGroup specialChars;
 	
 	
 	/**
 	 * The MultitoolController constructor <br>
-	 * TODO
+	 * Instantiates the model classes, generation controller, data controller, and calls the loadData method
 	 */
 	public MultitoolController() {
-		// TODO
+		// Instantiate the model classes to allow for data formating
 		password = new Password();
 		name = new Name();
 		email = new Email();
@@ -303,7 +302,7 @@ public class MultitoolController {
 		// Instantiate generate, an instance of GenerationController, to manage generating the main content types
 		generate = new GenerationController();
 		
-		//TODO
+		// Instantiate dataController, an instance of DataController, to manage the loading of data
 		dataController = new DataController();
 		
 		// Load data
@@ -312,7 +311,7 @@ public class MultitoolController {
 	
 	
 	/**
-	 * TODO
+	 * The loadData method loads all saved data as well as the first and last name resources for name generation
 	 */
 	private void loadData() {
 		// Load saved data
@@ -328,7 +327,7 @@ public class MultitoolController {
 	
 	
 	/**
-	 * TODO
+	 * The method generateBirthdayHandler triggers the generateBirthday method once the birthdayGenerateBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -356,7 +355,7 @@ public class MultitoolController {
 			 
 			// Inform the user that the birthday was generated
 			birthdayGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-			birthdayGenMsg.setText("Birthday generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+			birthdayGenMsg.setText("Birthday generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
     		
     		// Display the birthday to the user
         	displayBirthdayPane.setVisible(true);
@@ -367,13 +366,13 @@ public class MultitoolController {
 		 } else {
 			// The lower age range is higher than the upper range; inform the user that it must be addressed
 			 birthdayGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-			 birthdayGenMsg.setText("The lower range cannot be higher than the upper range"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+			 birthdayGenMsg.setText("The lower range cannot be higher than the upper range"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
 		 }
 	}
 
 	 
 	 /**
-	 * TODO
+	 * The method lowerRangeMsgHandler triggers the updateBirthdayRangeMsg method while the mouse is dragging over the ageLowerRange slider
 	 * 
 	 * @param event
 	 */
@@ -384,7 +383,7 @@ public class MultitoolController {
     
     
     /**
-	 * TODO
+	 * The method upperRangeMsgHandler triggers the updateBirthdayRangeMsg method while the mouse is dragging over the ageUpperRange slider
 	 * 
 	 * @param event
 	 */
@@ -405,7 +404,7 @@ public class MultitoolController {
 	 
 
 	/**
-	 * TODO
+	 * The method generateEmailHandler triggers the generateEmail method once the emailGenerateBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -421,18 +420,10 @@ public class MultitoolController {
      * TODO
      */
     private void generateEmail() {
-		
-    	// TODO
-    	String email;
-    	
-    	// TODO
-    	String domain;
-    	
-    	// TODO
-    	String name = "";
-    	
-    	// TODO
-    	ArrayList<String> domains = new ArrayList<>();
+    	String email; // TODO
+    	String domain; // TODO
+    	String name = ""; // TODO
+    	ArrayList<String> domains = new ArrayList<>(); // TODO
     	
     	// Collect all of the domains that the user wants to include
     	if (emailAddressGmail.isSelected()) {
@@ -486,7 +477,7 @@ public class MultitoolController {
     		
     		// Inform the user that the email was generated
         	emailGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-        	emailGenMsg.setText("Email generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+        	emailGenMsg.setText("Email generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
     		
     		// Display the email to the user
         	displayEmailPane.setVisible(true);
@@ -496,7 +487,7 @@ public class MultitoolController {
     	} else { 
     		// No domains are selected; inform the user that it must be addressed
     		emailGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-    		emailGenMsg.setText("Please select at least one domain option"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		emailGenMsg.setText("Please select at least one domain option"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
 			
 			// Hide the generated password pane from then user (there is nothing to display)
     		displayEmailPane.setVisible(false);
@@ -505,7 +496,7 @@ public class MultitoolController {
 
 
 	/**
-	 * TODO
+	 * The method generateNameHandler triggers the generateName method once the nameGenerateBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -526,7 +517,7 @@ public class MultitoolController {
 		
 		// Inform the user that the name was generated
 		nameGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-		nameGenMsg.setText("Name generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+		nameGenMsg.setText("Name generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
 		
 		// Display the name to the user
 		displayNamePane.setVisible(true);
@@ -538,7 +529,7 @@ public class MultitoolController {
 
 
 	/**
-	 * TODO
+	 * The method generatePasswordHandler triggers the generatePassword method once the passwordGenerateBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -600,7 +591,7 @@ public class MultitoolController {
     		
 			// Inform the user that the password was generated
 			passwordGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-    		passwordGenMsg.setText("Secure password generated"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+    		passwordGenMsg.setText("Secure password generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
     		
     		// Add the generated password's value to the relevant text box
     		generatedPasswordContainer.setText(generatedPassword);
@@ -610,7 +601,7 @@ public class MultitoolController {
 		} else {
 			// The length is invalid; inform the user that it must be addressed
 			passwordGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-			passwordGenMsg.setText("Invalid length input"); // TODO add message to MultitoolInterfaceMessages to ensure MVC
+			passwordGenMsg.setText("Invalid length input"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
 			
 			// Hide the generated password pane from then user (there is nothing to display)
 			displayPasswordPane.setVisible(false);
@@ -634,7 +625,7 @@ public class MultitoolController {
 
 
 	/**
-	 * TODO
+	 * The method removeBirthdayHandler triggers the removeContent method once the birthdayRemoveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -647,7 +638,7 @@ public class MultitoolController {
 
     
     /**
-	 * TODO
+	 * The method removeEmailHandler triggers the removeContent method once the emailRemoveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -660,7 +651,7 @@ public class MultitoolController {
 
     
     /**
-	 * TODO
+	 * The method removeNameHandler triggers the removeContent method once the nameRemoveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -673,7 +664,7 @@ public class MultitoolController {
 
     
     /**
-	 * TODO
+	 * The method removePasswordHandler triggers the removeContent method once the passwordRemoveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -687,6 +678,9 @@ public class MultitoolController {
     
     /**
      * TODO
+     * 
+     * @param savedContents
+     * @param contents
      */
     private void removeContent(ListView<String> savedContents, ArrayList<String> contents) {
     	// Get the index of the selected content-to-remove and remove said content from contents
@@ -726,7 +720,7 @@ public class MultitoolController {
 
     
     /**
-	 * TODO
+	 * The method saveBirthdayHandler triggers the saveBirthday method once the birthdaySaveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -758,7 +752,7 @@ public class MultitoolController {
 
 
     /**
-	 * TODO
+	 * The method saveEmailHandler triggers the saveEmail method once the emailSaveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -790,7 +784,7 @@ public class MultitoolController {
 
 
 	/**
-	 * TODO
+	 * The method saveNameHandler triggers the saveName method once the nameSaveBtn is clicked
 	 * 
 	 * @param event
 	 */
@@ -824,7 +818,7 @@ public class MultitoolController {
 
 
 	/**
-	 * TODO
+	 * The method savePasswordHandler triggers the savePassword method once the passwordSaveBtn is clicked
 	 * 
 	 * @param event
 	 */
