@@ -13,6 +13,12 @@ import model.Email;
 import model.Name;
 import model.Password;
 
+/**
+ * The DataController class contains the logic for loading and initializing all of the saved databases into the program
+ * 
+ * @version 5/17/2024
+ * @author Andrew Polyak
+ */
 public class DataController {
 
 	// passwords is an ArrayList of String values which represent all user-saved passwords
@@ -33,7 +39,9 @@ public class DataController {
 	// lastNames is an ArrayList of String values which represents all possible last names which can be randomly generated
 	private ArrayList<String> lastNames;
 		
-	
+	/**
+	 * Default DataController constructor
+	 */
 	public DataController() { }
 	
 	

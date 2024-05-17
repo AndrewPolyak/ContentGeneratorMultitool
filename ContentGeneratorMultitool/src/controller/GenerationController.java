@@ -11,7 +11,7 @@ import model.Password;
 /**
  * The GenerationController class contains the logic for randomly generating content within the program
  * 
- * @version 05/15/2024
+ * @version 05/17/2024
  * @author Andrew Polyak
  */
 public class GenerationController {
@@ -138,26 +138,29 @@ public class GenerationController {
 
 
 	/**
-	 * TODO
+	 * The generateEmail method takes in an ArrayList of email domains, as well as a person's full name <br>
+	 * A separator may be added between the person's first and last name, and a number value following the last name <br>
+	 * The domain name following the "@" is randomly chosen from the selected domain options <br>
+	 * A fully formatted email address is then returned
 	 * 
 	 * @param domainNames
 	 * @param fullName
-	 * @return TODO
+	 * @return email
 	 */
 	public String generateEmail(ArrayList<String> domainNames, String fullName) {
-		String email; // TODO
-		String includedNumber = ""; // TODO
-		String includedSeparator = ""; // TODO
+		String email; // email represents the final generated email
+		String includedNumber = ""; // includedNumber is an empty String value that *may* be filled with a number
+		String includedSeparator = ""; // includedSeparator is an empty String value that *may* be filled with a separator
 		
-		// TODO
+		// Split fullName into two separate values: firstName and lastName
 		String fullNameSplit[] = fullName.split(" ");
 		String firstName = fullNameSplit[0].toLowerCase();
 		String lastName = fullNameSplit[1].toLowerCase();
 		
-		// TODO
+		// Select a random domain name from the list of selected domain names
 		String domainName = domainNames.get(randomizer.nextInt(domainNames.size())).toLowerCase();
 		
-		// TODO
+		// Randomly choose whether a separator and / or number value should be included in the email
 		boolean includeNumber = randomizer.nextBoolean();
 		boolean includeSeparator = randomizer.nextBoolean();
 		
@@ -189,7 +192,14 @@ public class GenerationController {
 	}
 	
 	
-	
+	/**
+	 * The generateBirthday method generates a random date, month, and year which falls between the birth years of the lower and upper age range provided <br>
+	 * Example: If the current year is 2024, and the lower and upper ranges are 14 and 24 years, then the randomized birthday will fall between the years of 2000 and 2010
+	 * 
+	 * @param lowerAge
+	 * @param upperAge
+	 * @return birthday
+	 */
 	public String generateBirthday(int lowerAge, int upperAge) {
 		int randomDate = randomizer.nextInt(31); // randomDate represents a random date of the month
 		int randomMonth = randomizer.nextInt(12); // randomMonth represents a random month

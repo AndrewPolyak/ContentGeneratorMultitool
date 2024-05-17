@@ -37,7 +37,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getLettersLowercase method returns the entire lower-case English alphabet (a-z) as a String value
 	 * 
-	 * @return TODO
+	 * @return LETTERS_LOWERCASE
 	 */
 	public String getLettersLowercase() {
 		return LETTERS_LOWERCASE;
@@ -47,7 +47,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getLettersUppercase method returns the entire upper-case English alphabet (A-Z) as a String value
 	 * 
-	 * @return TODO
+	 * @return LETTERS_UPPERCASE
 	 */
 	public String getLettersUppercase() {
 		return LETTERS_UPPERCASE;
@@ -57,7 +57,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getNumbers method returns all Hindu-Arabic numerals (0-9) as a String value
 	 * 
-	 * @return
+	 * @return NUMBERS
 	 */
 	public String getNumbers() {
 		return NUMBERS;
@@ -67,7 +67,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getSpecialCharactersAll method returns all special characters commonly found on keyboards as a String value
 	 * 
-	 * @return TODO
+	 * @return SPECIAL_CHARACTERS_ALL
 	 */
 	public String getSpecialCharactersAll() {
 		return SPECIAL_CHARACTERS_ALL;
@@ -77,7 +77,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getSpecialCharactersLtd method returns all special characters commonly found on keyboards except for the following: " ' \ as a String value
 	 * 
-	 * @return TODO
+	 * @return SPECIAL_CHARACTERS_LTD
 	 */
 	public String getSpecialCharactersLtd() {
 		return SPECIAL_CHARACTERS_LTD;
@@ -87,7 +87,7 @@ public class Password extends GeneratedData {
 	/**
 	 * The getSpace method returns a space character as a String value
 	 * 
-	 * @return TODO
+	 * @return SPACE
 	 */
 	public String getSpace() {
 		return SPACE;

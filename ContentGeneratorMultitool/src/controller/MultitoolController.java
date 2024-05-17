@@ -27,7 +27,7 @@ import model.Password;
 /**
  * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling logic, data loading/saving, etc.
  * 
- * @version 05/05/2024
+ * @version 05/17/2024
  * @author Andrew Polyak
  */
 public class MultitoolController {
@@ -168,75 +168,75 @@ public class MultitoolController {
     @FXML
     private TextField generatedBirthdayContainer;
 
- // generatedEmailContainer is a Textfield object containing the generated email for the user to see
+    // generatedEmailContainer is a Textfield object containing the generated email for the user to see
     @FXML
     private TextField generatedEmailContainer;
 
- // generatedNameContainer is a Textfield object containing the generated name for the user to see
+    // generatedNameContainer is a Textfield object containing the generated name for the user to see
     @FXML
     private TextField generatedNameContainer;
 
- // generatedPasswordContainer is a Textfield object containing the generated password for the user to see
+    // generatedPasswordContainer is a Textfield object containing the generated password for the user to see
     @FXML
     private TextField generatedPasswordContainer;
 
-    // TODO
+    // nameGenMsg is a Text object representing the dynamic message displayed to the user once they click the generate name button
     @FXML
     private Text nameGenMsg;
 
-    // TODO
+    // nameGenerateBtn is a Button object representing the button the user can press to generate a name
     @FXML
     private Button nameGenerateBtn;
 
-    // TODO
+    // nameRemoveBtn is a Button object representing the button the user can press to remove their selected saved name
     @FXML
     private Button nameRemoveBtn;
 
-    // TODO
+    // nameSaveBtn is a Button object representing the button the user can press to save their generated name
     @FXML
     private Button nameSaveBtn;
 
-    // TODO
+    // passwordAllSpecChars is a RadioButton object which the user can select to enable all special characters within the password generation
     @FXML
     private RadioButton passwordAllSpecChars;
 
-    // TODO
+    // passwordCaseLower is a CheckBox object which the user can select to enable all lowercase characters within the password generation
     @FXML
     private CheckBox passwordCaseLower;
 
-    // TODO
+    // passwordCaseUpper is a CheckBox object which the user can select to enable all uppercase characters within the password generation
     @FXML
     private CheckBox passwordCaseUpper;
 
-    // TODO
+    // passwordGenMsg is a Text object representing the dynamic message displayed to the user once they click the generate password button
     @FXML
     private Text passwordGenMsg;
 
-    // TODO
+    // passwordGenerateBtn is a Button object representing the button the user can press to generate a password
     @FXML
     private Button passwordGenerateBtn;
 
-    // TODO
+    // passwordLength is a Textfield object where the user can input their desired password length
     @FXML
     private TextField passwordLength;
 
-    // TODO
+    // passwordLtdSpecChars is a RadioButton object which the user can select to enable limited special characters within the password generation
     @FXML
     private RadioButton passwordLtdSpecialChars;
 
-    // TODO
+    // passwordNumbers is a CheckBox object which the user can select to enable numerical characters within the password generation
     @FXML
     private CheckBox passwordNumbers;
 
-    // TODO
+    // passwordRemoveBtn is a Button object representing the button the user can press to remove their selected saved password
     @FXML
     private Button passwordRemoveBtn;
 
-    // TODO
+    // passwordSaveBtn is a Button object representing the button the user can press to save their generated password
     @FXML
     private Button passwordSaveBtn;
    
-    // TODO
+    // passwordSpaces is a CheckBox object which the user can select to enable space / whitespace characters within the password generation
     @FXML
     private CheckBox passwordSpaces;
 

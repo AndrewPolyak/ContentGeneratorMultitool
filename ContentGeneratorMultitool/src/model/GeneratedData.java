@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * The GeneratedData abstract class contains the logic for correctly structuring saved data in the respective saved data database
+ * 
+ * @version 5/17/2024
+ * @author Andrew Polyak
+ */
 public abstract class GeneratedData {
 
 	/**
