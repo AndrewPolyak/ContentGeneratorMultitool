@@ -21,32 +21,36 @@ import model.Birthday;
 import model.Email;
 import model.Name;
 import model.Password;
+import view.MultitoolInterfaceMessages;
 
 
 /**
  * The MultitoolController class contains the main logic for the program, including the methods for random generation, button handling logic, data loading/saving, etc.
  * 
- * @version 05/17/2024
+ * @version 05/18/2024
  * @author Andrew Polyak
  */
 public class MultitoolController {
 	
-	// TODO
+	// message is an instance of MultitoolInterfaceMessages, a class containing the dynamic messages displayed within the GUI
+	private MultitoolInterfaceMessages message;
+	
+	// dataController is an instance of DataController, a class containing the data loading / saving methods
 	private DataController dataController;
 	
-	//TODO
+	// generate is an instance of GenerationController, a class containing the random content generation methods
 	private GenerationController generate;
 	
-	// TODO
+	// password is an instance of Password, a class containing methods for formatting saved password data
 	private Password password;
 	
-	//TODO
+	// name is an instance of Name, a class containing methods for formatting saved name data
 	private Name name;
 	
-	// TODO
+	// email is an instance of Email, a class containing methods for formatting saved email data
 	private Email email;
 	
-	// TODO
+	// birthday is an instance of Birthday, a class containing methods for formatting saved birthday data
 	private Birthday birthday;
 	
 	// passwords is an ArrayList of String values which represent all user-saved passwords
@@ -290,24 +294,29 @@ public class MultitoolController {
 	
 	/**
 	 * The MultitoolController constructor <br>
-	 * Instantiates the model classes, generation controller, data controller, and calls the loadData method
+	 * Instantiates the model classes, generation controller, data controller, message, and calls the loadData method
 	 */
 	public MultitoolController() {
-		// Instantiate the model classes to allow for data formating
 		password = new Password();
 		name = new Name();
 		email = new Email();
 		birthday = new Birthday();
-		
-		// Instantiate generate, an instance of GenerationController, to manage generating the main content types
+
 		generate = new GenerationController();
-		
-		// Instantiate dataController, an instance of DataController, to manage the loading of data
+
 		dataController = new DataController();
-		
-		// Load data
-		loadData();
+
+		message = new MultitoolInterfaceMessages();
 	}
+	
+	
+	/**
+     * The initialize method is called automatically after the FXML components are injected
+     */
+    @FXML
+    private void initialize() {
+        loadData();
+    }
 	
 	
 	/**
@@ -323,6 +332,39 @@ public class MultitoolController {
 		// Load generation resource data
 		firstNames = dataController.loadFirstNameDatabase();
 		lastNames = dataController.loadLastNameDatabase();
+		
+		// Load the list views with data
+		loadListView(savedPasswords, passwords);
+		loadListView(savedNames, names);
+		loadListView(savedEmails, emails);
+		loadListView(savedBirthdays, birthdays);
+	}
+	
+	
+	/**
+	 * The method loadListView loads the contents ArrayList into the savedContents ListView
+	 * 
+	 * @param savedContents
+	 * @param contents
+	 */
+	private void loadListView(ListView<String> savedContents, ArrayList<String> contents) {
+		// Clear ListView
+		savedContents.getItems().clear();
+		
+		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
+        ObservableList<String> observableList = FXCollections.observableArrayList(contents);
+        savedContents.getItems().addAll(observableList);
+	}
+	
+	
+	/**
+	 * The saveData method saves all data to their relevant txt files
+	 */
+	public void saveData() {
+		dataController.saveBirthdayData(birthdays, birthday);
+		dataController.saveEmailData(emails, email);
+		dataController.saveNameData(names, name);
+		dataController.savePasswordData(passwords, password);
 	}
 	
 	
@@ -340,7 +382,9 @@ public class MultitoolController {
 
 	 
 	 /**
-	  * TODO
+	  * The method generateBirthday takes the upper and lower age ranges and generates a random birthday that falls between
+	  * the birth years of those ages relative to the current date <br>
+	  * The generated birthday is then displayed to the user
 	  */
 	 private void generateBirthday() {
 		
@@ -355,7 +399,7 @@ public class MultitoolController {
 			 
 			// Inform the user that the birthday was generated
 			birthdayGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-			birthdayGenMsg.setText("Birthday generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+			birthdayGenMsg.setText(message.birthdayGeneratedMsg());
     		
     		// Display the birthday to the user
         	displayBirthdayPane.setVisible(true);
@@ -366,7 +410,7 @@ public class MultitoolController {
 		 } else {
 			// The lower age range is higher than the upper range; inform the user that it must be addressed
 			 birthdayGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-			 birthdayGenMsg.setText("The lower range cannot be higher than the upper range"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+			 birthdayGenMsg.setText(message.lowerAgeHigherThanUpperMsg());
 		 }
 	}
 
@@ -394,12 +438,12 @@ public class MultitoolController {
     
     
     /**
-     * TODO
+     * The method uperdateBirthdayRangeMsg updates the text indicating the current slider values every time the slider value changes
      */
     private void updateBirthdayRangeMsg() {
         int lowerValue = (int) ageLowerRange.getValue();
         int upperValue = (int) ageUpperRange.getValue();
-        birthdayRangeMsg.setText("Between " + lowerValue + " and " + upperValue + " years of age"); // FIXME MVC
+        birthdayRangeMsg.setText(message.birthdayRangeMsg(lowerValue, upperValue));
     }
 	 
 
@@ -417,13 +461,14 @@ public class MultitoolController {
     
     
     /**
-     * TODO
+     * The method generateEmail collects all user selected domains and also collects the user selected saved name (if selected),
+     * then generates a randomized email, potentially including random separators and numbers within the email as well
      */
     private void generateEmail() {
-    	String email; // TODO
-    	String domain; // TODO
-    	String name = ""; // TODO
-    	ArrayList<String> domains = new ArrayList<>(); // TODO
+    	String email; // email represents the final generated email
+    	String domain; // domain represents the randomly selected email domain
+    	String name = ""; // name represents either the randomly generated name or the user selected name
+    	ArrayList<String> domains = new ArrayList<>(); // domains represents the ArrayList of all domains within the RNG pool
     	
     	// Collect all of the domains that the user wants to include
     	if (emailAddressGmail.isSelected()) {
@@ -477,7 +522,7 @@ public class MultitoolController {
     		
     		// Inform the user that the email was generated
         	emailGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-        	emailGenMsg.setText("Email generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+        	emailGenMsg.setText(message.emailGeneratedMsg());
     		
     		// Display the email to the user
         	displayEmailPane.setVisible(true);
@@ -487,7 +532,7 @@ public class MultitoolController {
     	} else { 
     		// No domains are selected; inform the user that it must be addressed
     		emailGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-    		emailGenMsg.setText("Please select at least one domain option"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+    		emailGenMsg.setText(message.selectedDomainMsg());
 			
 			// Hide the generated password pane from then user (there is nothing to display)
     		displayEmailPane.setVisible(false);
@@ -509,7 +554,7 @@ public class MultitoolController {
 
     
     /**
-     * TODO
+     * The generateName method selects a random first and last name from their respective RNG pools, and concatenates them into a full name
      */
     private void generateName() {
     	// Generate the name
@@ -517,7 +562,7 @@ public class MultitoolController {
 		
 		// Inform the user that the name was generated
 		nameGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-		nameGenMsg.setText("Name generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+		nameGenMsg.setText(message.nameGeneratedMsg());
 		
 		// Display the name to the user
 		displayNamePane.setVisible(true);
@@ -542,7 +587,7 @@ public class MultitoolController {
 
     
     /**
-     * TODO
+     * The generatePassword method collects all user selected password parameters and generates a randomized string of characters based on it
      */
     private void generatePassword() {
     	String generatedPassword; // generatedPassword is a String value representing the final generated password
@@ -591,7 +636,7 @@ public class MultitoolController {
     		
 			// Inform the user that the password was generated
 			passwordGenMsg.setFill(Color.rgb(99, 173, 242, 1));
-    		passwordGenMsg.setText("Secure password generated"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+    		passwordGenMsg.setText(message.passwordGeneratedMsg());
     		
     		// Add the generated password's value to the relevant text box
     		generatedPasswordContainer.setText(generatedPassword);
@@ -601,7 +646,7 @@ public class MultitoolController {
 		} else {
 			// The length is invalid; inform the user that it must be addressed
 			passwordGenMsg.setFill(Color.rgb(228, 73, 73, 1));
-			passwordGenMsg.setText("Invalid length input"); // FIXME add message to MultitoolInterfaceMessages to ensure MVC
+			passwordGenMsg.setText(message.invalidLengthMsg());
 			
 			// Hide the generated password pane from then user (there is nothing to display)
 			displayPasswordPane.setVisible(false);
@@ -677,7 +722,10 @@ public class MultitoolController {
     
     
     /**
-     * TODO
+     * The removeContent method takes in savedContents (the ListView of the saved items) and contents (the ArrayList of the saved items) <br>
+     * The index within savedContents that the user has selected is used to identify and remove the selected item from contents <br>
+     * The ListView of savedContents is then updated with the new ArrayList of contents <br>
+     * This method effectively removes the user selected item from the ListView
      * 
      * @param savedContents
      * @param contents
@@ -689,19 +737,14 @@ public class MultitoolController {
 			contents.remove(selectedContentIndex);
 		}
 		
-		// Empty ListView; we will re-add items soon
-		savedContents.getItems().clear();
-		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
-        ObservableList<String> observableList = FXCollections.observableArrayList(contents);
-        savedContents.getItems().addAll(observableList);
+		loadListView(savedContents, contents);
         
         removeSavedNamesForEmail();
     }
     
     
     /**
-     * TODO
+     * The method removeSavedNamesForEmail effectively removes the user selected item from the ListView
      */
     private void removeSavedNamesForEmail() {
     	// Get the index of the selected content-to-remove and remove said content from contents
@@ -710,12 +753,7 @@ public class MultitoolController {
 			names.remove(selectedContentIndex);
 		}
 		
-		// Empty ListView; we will re-add items soon
-		savedNamesForEmail.getItems().clear();
-		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedContents
-        ObservableList<String> observableList = FXCollections.observableArrayList(names);
-        savedNamesForEmail.getItems().addAll(observableList);
+        loadListView(savedNamesForEmail, names);
     }
 
     
@@ -733,21 +771,17 @@ public class MultitoolController {
 
     
     /**
-     * TODO
+     * The method saveBirthday adds the randomly generated birthday into the birthdays ArrayList whilst also formatting it,
+     * then adds the ArrayList into the savedBirthdays ListView
      */
     private void saveBirthday() {
-    	// Empty ListView; we will re-add contents soon
-		savedBirthdays.getItems().clear();
-		
 		// Collect the generated birthday
 		String birthday = generatedBirthdayContainer.getText();
 		
 		// Add the generated birthday to the ArrayList
 		birthdays.add(this.birthday.formatBirthday(birthday));
 		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedBirthdays
-        ObservableList<String> observableList = FXCollections.observableArrayList(birthdays);
-        savedBirthdays.getItems().addAll(observableList);
+		loadListView(savedBirthdays, birthdays);
 	}
 
 
@@ -765,21 +799,17 @@ public class MultitoolController {
     
     
     /**
-     * TODO
+     * The method saveEmail adds the randomly generated email into the emails ArrayList whilst also formatting it,
+     * then adds the ArrayList into the savedEmails ListView
      */
 	private void saveEmail() {
-		// Empty ListView; we will re-add contents soon
-		savedEmails.getItems().clear();
-		
 		// Collect the generated email
 		String email = generatedEmailContainer.getText();
 		
 		// Add the generated email to the ArrayList
 		emails.add(this.email.formatEmail(email));
 		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedEmails
-        ObservableList<String> observableList = FXCollections.observableArrayList(emails);
-        savedEmails.getItems().addAll(observableList);
+		loadListView(savedEmails, emails);
 	}
 
 
@@ -797,23 +827,18 @@ public class MultitoolController {
 
     
     /**
-     * TODO
+     * The method saveName adds the randomly generated name to the names ArrayList whilst also formatting it,
+     * then adds the ArrayList into the savedNames ListView
      */
     private void saveName() {
-    	// Empty ListView; we will re-add contents soon
-		savedNames.getItems().clear();
-		savedNamesForEmail.getItems().clear();
-		
 		// Collect the generated name
 		String name = generatedNameContainer.getText();
 		
 		// Add the generated name to the ArrayList
 		names.add(this.name.formatName(name));
 		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedNames
-        ObservableList<String> observableList = FXCollections.observableArrayList(names);
-        savedNames.getItems().addAll(observableList);
-        savedNamesForEmail.getItems().addAll(observableList);
+        loadListView(savedNames, names);
+        loadListView(savedNamesForEmail, names);
 	}
 
 
@@ -831,12 +856,10 @@ public class MultitoolController {
     
     
     /**
-     * TODO
+     * The method savePasswords adds the randomly generated password into the passwords ArrayList whilst also formatting it,
+     * then adds the ArrayList into the savedPasswords ListView
      */
     private void savePassword() {
-    	// Empty ListView; we will re-add contents soon
-		savedPasswords.getItems().clear();
-		
 		// Collect the user-inputted account data + generated password
 		String password = generatedPasswordContainer.getText();
 		String website = passwordWebsite.getText();
@@ -852,9 +875,7 @@ public class MultitoolController {
 			passwords.add(this.password.formatAccountDetails(password, website, username));
 		}
 		
-		// Create ObservableList and add items from ArrayList and add ObservableList contents to savedPasswords
-        ObservableList<String> observableList = FXCollections.observableArrayList(passwords);
-        savedPasswords.getItems().addAll(observableList);
+		loadListView(savedPasswords, passwords);
     }
 	
 }

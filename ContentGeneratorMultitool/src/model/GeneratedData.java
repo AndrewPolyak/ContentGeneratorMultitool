@@ -14,7 +14,7 @@ public abstract class GeneratedData {
 	 * @return content + newline
 	 */
 	public String formatData(String content) {
-		return content + "/n";
+		return content + "\n";
 	}
 	
 }
