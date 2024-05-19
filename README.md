@@ -2,13 +2,13 @@
 
 DEVELOPER NOTE: 
 - The bulk of this project is complete; development may continue to expand and enhance the project.
-- If you intend to run this project on your local machine, you need to set the classpath and VM arguments to enable JavaFX functionality.
+- If you intend to run this project on your local machine, you need to set the relevant classpath library paths and VM argument to enable JavaFX functionality (Universal EXE file may be implemented in the future)
 
 This project is built using Java and JavaFX, and is a comprehensive content generator for things such as secure passwords, randomized names, randomized emails, and randomized birthdays.
 
 Password Generation Page:
 ![image](https://github.com/AndrewPolyak/ContentGeneratorMultitool/assets/157662133/2ca7e5df-5475-46fb-b67f-a15839331b8c)
-![image](https://github.com/AndrewPolyak/ContentGeneratorMultitool/assets/157662133/8ab48ef6-3086-4e6f-80ca-a8e951849dc1)
+![image](https://github.com/AndrewPolyak/ContentGeneratorMultitool/assets/157662133/04dbab25-8788-486d-876b-092a2c9dd194)
 
 
 Name Generation Page:
