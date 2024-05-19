@@ -124,7 +124,7 @@ public class GenerationController {
 	 */
 	private String toTitleCase(String word) {
 		
-		if (word.matches("\\d+")) {
+		if (!word.matches("\\d+")) {
 			// Get the first letter of the name (firstCharLower), then capitalize it (firstCharUpper)
 			char firstCharLower = word.charAt(0);
 			char firstCharUpper = Character.toUpperCase(firstCharLower);
